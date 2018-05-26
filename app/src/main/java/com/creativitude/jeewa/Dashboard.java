@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.creativitude.jeewa.activity.Drawer;
 
-public class MainActivity extends Drawer {
+public class Dashboard extends Drawer {
 
 
 
@@ -18,7 +18,7 @@ public class MainActivity extends Drawer {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         final LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        @SuppressLint("InflateParams") View contentView = inflater.inflate(R.layout.activity_main, null, false);
+        @SuppressLint("InflateParams") View contentView = inflater.inflate(R.layout.dashboard, null, false);
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.home);
     }
