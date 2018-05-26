@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Jeewa</string>
+    <string name="drawerLogoContent">drawer logo</string>
+
     <string-array name="langs">
         <item>Choose Language</item>
         <item>English</item>
