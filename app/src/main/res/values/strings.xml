@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Jeewa</string>
+    <string-array name="langs">
+        <item>Choose Language</item>
+        <item>English</item>
+        <item>Sinhala</item>
+    </string-array>
 </resources>
