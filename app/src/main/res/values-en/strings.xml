@@ -18,6 +18,7 @@
     <string name="terms">Terms &amp; Conditions</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="requests">Requests</string>
 
 
     <string-array name="langs">
