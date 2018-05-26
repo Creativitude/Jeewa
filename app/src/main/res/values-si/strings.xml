@@ -39,6 +39,9 @@
     <string name="requests">ඉල්ලීම්</string>
     <string name="empty_field">අවශ්යයි</string>
     <string name="mismatch">මුරපද ගැලපෙන්නේ නැත</string>
+    <string name="distric_required">දිස්ත්රික්කය තෝරා ගත යුතුය</string>
+    <string name="gender_required">ස්ත්‍රී/පුරුෂ භාවය තෝරා ගත යුතුය</string>
+    <string name="bg_required">රුධිර ගණය තෝරා ගත යුතුය</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>

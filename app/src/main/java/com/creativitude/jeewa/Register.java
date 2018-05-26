@@ -54,15 +54,12 @@ public class Register extends AppCompatActivity {
         confirm_password = findViewById(R.id.et_reg_confirm_password);
 
         user = new User();
-        error = 0;
-
-
     }
 
 
     public void register(View view) {
+        error = 0;
         validateInputs();
-
 
     }
 
@@ -140,19 +137,21 @@ public class Register extends AppCompatActivity {
             }
         }
 
-        if(district.isSelected()) {
+        if(district.getSelectedItemPosition() != 0) {
             user.setDistrict(district.getSelectedItem().toString());
         } else {
             error++;
-            Toast.makeText(getApplicationContext(),getString(R.string.empty_field),Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.distric_required),Toast.LENGTH_SHORT).show();
         }
 
-        if(bg.isSelected()) {
+        if(bg.getSelectedItemPosition() != 0) {
             user.setBg(bg.getSelectedItem().toString());
         } else {
             error++;
-            Toast.makeText(getApplicationContext(),getString(R.string.empty_field),Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.bg_required),Toast.LENGTH_SHORT).show();
         }
+
+        Toast.makeText(getApplicationContext(),String.valueOf(error),Toast.LENGTH_SHORT).show();
 
 
 

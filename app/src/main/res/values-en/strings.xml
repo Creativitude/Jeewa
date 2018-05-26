@@ -39,6 +39,9 @@
     <string name="requests">Requests</string>
     <string name="empty_field">Required</string>
     <string name="mismatch">Passwords are not matching</string>
+    <string name="distric_required">Distric should be selected</string>
+    <string name="gender_required">Gender field is required</string>
+    <string name="bg_required">Blood group should be selected</string>
 
 
     <string-array name="langs">
