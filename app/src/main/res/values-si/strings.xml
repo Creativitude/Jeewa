@@ -18,6 +18,7 @@
     <string name="terms">කොන්දේසි</string>
     <string name="drawer_open">විවෘත</string>
     <string name="drawer_close">ආවෘත</string>
+    <string name="requests">ඉල්ලීම්</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>

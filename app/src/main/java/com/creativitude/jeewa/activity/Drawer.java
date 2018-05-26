@@ -58,7 +58,12 @@ public class Drawer extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
 //                        startActivity(new Intent(getApplicationContext(),MainMenuActivity.class));
+                        break;
 
+                    case R.id.requests:
+                        Toast.makeText(getApplicationContext(), "Requests", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawers();
+//                        startActivity(new Intent(getApplicationContext(),MainMenuActivity.class));
                         break;
 
                     case R.id.my_requests:
@@ -82,7 +87,6 @@ public class Drawer extends AppCompatActivity {
                     case R.id.profile:
                         Toast.makeText(getApplicationContext(), "profile", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
-                        //drawerLayout.closeDrawers();
                         //startActivity(ImageTranslateActivity.class);
                         break;
 
