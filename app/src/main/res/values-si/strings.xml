@@ -1,12 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Jeewa</string>
+    <string name="login_email">විද්‍යුත් ලිපිනය</string>
+    <string name="login_password">මුරපදය</string>
+    <string name="login_btn_login">ඇතුළු වන්න</string>
+    <string name="login_btn_register">ගිණුමක් නැතිද? මෙහි ලියාපදිංචි වන්න!</string>
+    <string name="register_name">නම</string>
+    <string name="register_age">Age</string>
+    <string name="register_district">දිස්ත්‍රික්කය</string>
+    <string name="register_contact">දුරකථන අංකය</string>
+    <string name="register_blood_group">Blood Group</string>
+    <string name="register_gender">ස්ත්‍රී/පුරුෂ භාවය</string>
+    <string name="male">පුරුෂ</string>
+    <string name="female">ස්ත්‍රී</string>
+    <string name="register_email">විද්‍යුත් ලිපිනය</string>
+    <string name="register_password">මුරපදය</string>
+    <string name="register_confirm_password">මුරපදය තහවුරු කරන්න</string>
+    <string name="register_btn_register">ලියාපදිංචි වන්න</string>
+    <string name="register_btn_login">ලියාපදිංචි වී ඇතිනම් මෙතැනින් ඇතුළු වන්න!</string>
+    <string name="label_register">ගිණුමක් සාදන්න</string>
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>
         <item>ඉංග්රීසි</item>
         <item>සිංහල</item>
     </string-array>
 
+    <string-array name="districts">
+        <item>දිස්ත්‍රික්කය තෝරන්න</item>
+        <item>අම්පාර</item>
+        <item>අනුරාධපුර</item>
+        <item>බදුල්ල</item>
+        <item>මඩකලපුව</item>
+        <item>කොළඹ</item>
+        <item>ගාල්ල</item>
+        <item>ගම්පහ</item>
+        <item>හම්බන්තොට</item>
+        <item>යාපනය</item>
+        <item>කළුතර</item>
+        <item>මහනුවර</item>
+        <item>කෑගල්ල</item>
+        <item>කිලිනොච්චිය</item>
+        <item>කුරුණෑගල</item>
+        <item>මන්නාරම</item>
+        <item>මාතලේ</item>
+        <item>මාතර</item>
+        <item>මොණරාගල</item>
+        <item>මුලතිව්</item>
+        <item>නුවරඑළිය</item>
+        <item>පොළොන්නරුව</item>
+        <item>පුත්තලම</item>
+        <item>රත්නපුර</item>
+        <item>ත්‍රිකුණාමලය</item>
+        <item>වවුනියාව</item>
+    </string-array>
 
+    <string-array name="blood_groups">
+        <item>රුධිර ගණය තෝරන්න</item>
+        <item>A +</item>
+        <item>A -</item>
+        <item>B +</item>
+        <item>B -</item>
+        <item>AB +</item>
+        <item>AB -</item>
+        <item>O +</item>
+        <item>O -</item>
+    </string-array>
 
 </resources>
