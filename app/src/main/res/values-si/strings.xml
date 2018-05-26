@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Jeewa</string>
+    <string name="drawerLogoContent">drawer logo</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="naveen_cooray">Naveen Cooray</string>
+    <string name="home">මුල් පිටුව</string>
+    <string name="my_requests">මගේ ඉල්ලීම්</string>
+    <string name="notifications">නිවේදන</string>
+    <string name="help">උපකාරක</string>
+    <string name="important_info">වැදගත් තොරතුරු</string>
+    <string name="preferences">මනාපයන්</string>
+    <string name="profile">පුද්ගලික තොරතුරු</string>
+    <string name="settings">සැකසුම්</string>
+    <string name="logout">පිට වන්න</string>
+    <string name="info">අතිරේක තොරතුරු</string>
+    <string name="about_developer">නිමැවුම්කරු ගැන</string>
+    <string name="terms">කොන්දේසි</string>
+    <string name="drawer_open">විවෘත</string>
+    <string name="drawer_close">ආවෘත</string>
+
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>
         <item>ඉංග්රීසි</item>
