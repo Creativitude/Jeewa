@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Jeewa</string>
+    <string-array name="langs">
+        <item>භාෂාව තෝරන්න</item>
+        <item>ඉංග්රීසි</item>
+        <item>සිංහල</item>
+    </string-array>
+
 
 
 </resources>
