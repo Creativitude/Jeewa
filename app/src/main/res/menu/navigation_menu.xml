@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home_24"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/requests"
+            android:icon="@drawable/baseline_public_black_18"
+            android:title="@string/requests" />
+        <item
+            android:id="@+id/my_requests"
+            android:icon="@drawable/response_24"
+            android:title="@string/my_requests" />
+        <item
+            android:id="@+id/notifications"
+            android:icon="@drawable/notification_24"
+            android:title="@string/notifications" />
+
+        <item
+            android:id="@+id/help"
+            android:title="@string/help">
+
+            <menu>
+
+                <item
+                    android:id="@+id/important_info"
+                    android:icon="@drawable/help_24"
+                    android:title="@string/important_info" />
+
+            </menu>
+        </item>
+
+
+        <item
+            android:id="@+id/preferences"
+            android:title="@string/preferences">
+
+            <menu>
+
+                <item
+                    android:id="@+id/profile"
+                    android:icon="@drawable/contacts_24"
+                    android:title="@string/profile" />
+
+                <item
+                    android:id="@+id/settings"
+                    android:icon="@drawable/settings_24"
+                    android:title="@string/settings" />
+
+                <item
+                    android:id="@+id/logout"
+                    android:icon="@drawable/export_24"
+                    android:title="@string/logout" />
+
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/info"
+            android:title="@string/info">
+
+            <menu>
+
+                <item
+                    android:id="@+id/about_developer"
+                    android:icon="@drawable/info_24"
+                    android:title="@string/about_developer" />
+
+                <item
+                    android:id="@+id/terms"
+                    android:icon="@drawable/scales_24"
+                    android:title="@string/terms" />
+
+            </menu>
+        </item>
+
+
+    </group>
+
+</menu>
