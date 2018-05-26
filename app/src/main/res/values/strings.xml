@@ -36,6 +36,8 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="requests">Requests</string>
+    <string name="empty_field">Required</string>
+    <string name="mismatch">Passwords are not matching</string>
 
     <string-array name="langs">
         <item>Choose Language</item>

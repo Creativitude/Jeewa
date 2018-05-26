@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:theme="@style/AppTheme"
+    android:paddingTop="10dp"
     tools:context=".Register">
 
 
@@ -157,6 +159,7 @@
                 android:textSize="16sp" />
 
             <RadioGroup
+                android:id="@+id/gender_group"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -164,12 +167,14 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/male" />
+                    android:text="@string/male"
+                    android:id="@+id/male"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/female" />
+                    android:text="@string/female"
+                    android:id="@+id/female"/>
             </RadioGroup>
 
         </LinearLayout>
@@ -242,7 +247,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"/>
 
 
         </LinearLayout>
@@ -255,7 +260,8 @@
             android:layout_marginTop="20dp"
             android:text="@string/register_btn_register"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:onClick="register"/>
 
         <Button
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -263,7 +269,8 @@
             android:layout_height="wrap_content"
             android:text="@string/register_btn_login"
             android:textAllCaps="false"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="registerToLogin"/>
 
         <Space
             android:layout_width="match_parent"
