@@ -32,7 +32,7 @@ public class Drawer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
-        toolbar =  findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initNavigationDrawer();
 
@@ -45,7 +45,6 @@ public class Drawer extends AppCompatActivity {
         navigationView = findViewById(R.id.navi_view);
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -120,14 +119,13 @@ public class Drawer extends AppCompatActivity {
         });
 
 
-
         View header = navigationView.getHeaderView(0);
         drawerLayout = findViewById(R.id.drawer);
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close){
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
 
             @Override
-            public void onDrawerClosed(View v){
+            public void onDrawerClosed(View v) {
                 super.onDrawerClosed(v);
             }
 
@@ -145,10 +143,10 @@ public class Drawer extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(),Login.class));
+                startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
             }
-        },200);
+        }, 200);
 
 
     }
@@ -159,14 +157,14 @@ public class Drawer extends AppCompatActivity {
 
     }
 
-    private void startActivity(final Class toClass){
+    private void startActivity(final Class toClass) {
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(),toClass));
+                startActivity(new Intent(getApplicationContext(), toClass));
             }
-        },200);
+        }, 200);
 
     }
 

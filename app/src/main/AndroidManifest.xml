@@ -12,14 +12,14 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="locale|orientation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-
-
         <activity
             android:name=".Login"
             android:configChanges="locale|orientation">
@@ -29,8 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Drawer"
-            android:configChanges="locale">
+        <activity
+            android:name=".Register"
+            android:label="@string/label_register">
 
         </activity>
     </application>
