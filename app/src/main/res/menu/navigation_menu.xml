@@ -9,7 +9,7 @@
         <item
             android:id="@+id/requests"
             android:title="@string/requests"
-            android:icon="@drawable/home_24"/>
+            android:icon="@drawable/baseline_public_black_18"/>
         <item
             android:id="@+id/my_requests"
             android:title="@string/my_requests"
