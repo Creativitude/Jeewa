@@ -60,10 +60,10 @@ public class RoundedTopImageView extends android.support.v7.widget.AppCompatImag
 
         //Fit to screen.
         float scale;
-        if ((mHeight / (float)bDIHeight) >= (mWidth / (float)bDIWidth)){
-            scale =  mHeight / (float)bDIHeight;
+        if ((mHeight / (float) bDIHeight) >= (mWidth / (float) bDIWidth)) {
+            scale = mHeight / (float) bDIHeight;
         } else {
-            scale = mWidth / (float)bDIWidth;
+            scale = mWidth / (float) bDIWidth;
         }
 
         float borderLeft = (mWidth - (bDIWidth * scale)) / 2;
@@ -81,12 +81,12 @@ public class RoundedTopImageView extends android.support.v7.widget.AppCompatImag
 
         if (drawable instanceof BitmapDrawable) {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
-            if(bitmapDrawable.getBitmap() != null) {
+            if (bitmapDrawable.getBitmap() != null) {
                 return bitmapDrawable.getBitmap();
             }
         }
 
-        if(drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+        if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
             bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888); // Single color bitmap will be created of 1x1 pixel
         } else {
             bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
