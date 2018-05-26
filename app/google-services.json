@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "5947990768",
+    "firebase_url": "https://e-copilot-205219.firebaseio.com",
+    "project_id": "e-copilot-205219",
+    "storage_bucket": "e-copilot-205219.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5947990768:android:f4f3700cde433d2b",
+        "android_client_info": {
+          "package_name": "com.creativitude.jeewa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5947990768-7ptg22q80d5s19sb1fk6qk4ta5lou5lq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.creativitude.jeewa",
+            "certificate_hash": "83de3afc3be2157cddd37623585d57e5d1038f8b"
+          }
+        },
+        {
+          "client_id": "5947990768-lrupbjr0ps5ovif03t7sagtg5vl0lllc.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "5947990768-lrupbjr0ps5ovif03t7sagtg5vl0lllc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAex2orXELcfIJjdAnADGjC-9STrzamS4Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5947990768-lrupbjr0ps5ovif03t7sagtg5vl0lllc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
