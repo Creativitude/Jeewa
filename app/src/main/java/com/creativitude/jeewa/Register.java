@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,6 +47,7 @@ public class Register extends AppCompatActivity {
     private FirebaseDatabase database;
 
     private String get_password;
+    private Alert alert;
 
 
     @Override
@@ -76,30 +78,37 @@ public class Register extends AppCompatActivity {
 
     }
 
-
     public void register(View view) {
+
+        alert = new Alert(Register.this);
+        alert.showAlert();
         error = 0;
         validateInputs();
 
         if (error == 0) {
 
             mAuth.createUserWithEmailAndPassword(user.getEmail(), get_password)
-                    .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success");
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                //                            updateUI(user);
-                                store_firebase(user);
-                                store_local(user);
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(Register.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-                            }
+                .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+
+                            store_firebase(user);
+                            store_local();
+
+                            alert.hideAlert();
+                            startActivity(new Intent(Register.this,Login.class));
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(Register.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+
+                            alert.hideAlert();
+                        }
 
                         }
                     });
@@ -110,25 +119,10 @@ public class Register extends AppCompatActivity {
     private void store_firebase(FirebaseUser user) {
 
         DatabaseReference userRef = database.getReference("Users");
-
-        userRef.child(user.getUid()).setValue(this.user).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-
-//                    Toast.makeText(getApplicationContext(),"")
-
-                } else {
-
-                }
-            }
-        });
+        userRef.child(user.getUid()).setValue(this.user);
     }
-
-    private void store_local(FirebaseUser user) {
-
-
-
+  
+    private void store_local() {
     }
 
     public void registerToLogin(View view) {

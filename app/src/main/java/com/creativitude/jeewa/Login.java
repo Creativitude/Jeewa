@@ -3,6 +3,7 @@ package com.creativitude.jeewa;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.helpers.Connectivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,6 +32,8 @@ public class Login extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private int error;
+    private AlertDialog alertDialog;
+    private Alert alert;
 
 
     @Override
@@ -60,6 +64,8 @@ public class Login extends AppCompatActivity {
     }
 
     public void onClickLogin(View view) {
+        alert = new Alert(Login.this);
+        alert.showAlert();
 
         error = 0;
         validateInputs();
@@ -78,6 +84,7 @@ public class Login extends AppCompatActivity {
 
     }
 
+
     private void localLogin() {
         Toast.makeText(getApplicationContext(), getString(R.string.offline_login), Toast.LENGTH_SHORT).show();
     }
@@ -92,6 +99,7 @@ public class Login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            alert.hideAlert();
 
                             startActivity(new Intent(Login.this, Dashboard.class));
                         } else {
@@ -99,6 +107,7 @@ public class Login extends AppCompatActivity {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                            alert.hideAlert();
                         }
 
                     }
