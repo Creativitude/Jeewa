@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,6 +47,7 @@ public class Register extends AppCompatActivity {
     private FirebaseDatabase database;
 
     private String get_password;
+    private Alert alert;
 
 
     @Override
@@ -78,6 +80,9 @@ public class Register extends AppCompatActivity {
 
 
     public void register(View view) {
+
+        alert = new Alert(Register.this);
+        alert.showAlert();
         error = 0;
         validateInputs();
 
@@ -91,7 +96,7 @@ public class Register extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //                            updateUI(user);
+
                             store_firebase(user);
                             store_local(user);
                         } else {
@@ -99,6 +104,8 @@ public class Register extends AppCompatActivity {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(Register.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+
+                            alert.hideAlert();
                         }
 
                     }
@@ -115,11 +122,12 @@ public class Register extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()) {
+                    alert.hideAlert();
 
 //                    Toast.makeText(getApplicationContext(),"")
 
                 } else {
-                    
+                    alert.hideAlert();
                 }
             }
         });
