@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
@@ -41,6 +43,9 @@ public class Register extends AppCompatActivity {
     private int error;
 
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+
+    private String get_password;
 
 
     @Override
@@ -67,6 +72,8 @@ public class Register extends AppCompatActivity {
         user = new User();
 
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+
     }
 
 
@@ -74,26 +81,53 @@ public class Register extends AppCompatActivity {
         error = 0;
         validateInputs();
 
-        mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        if (error == 0) {
+
+            mAuth.createUserWithEmailAndPassword(user.getEmail(), get_password)
+                .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-//                            updateUI(user);
+                            //                            updateUI(user);
+                            store_firebase(user);
+                            store_local(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(Register.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
                         }
 
-                        // ...
                     }
                 });
+        }
+
+    }
+
+    private void store_firebase(FirebaseUser user) {
+
+        DatabaseReference userRef = database.getReference("Users");
+
+        userRef.child(user.getUid()).setValue(this.user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+
+//                    Toast.makeText(getApplicationContext(),"")
+
+                } else {
+                    
+                }
+            }
+        });
+    }
+
+    private void store_local(FirebaseUser user) {
+
+
 
     }
 
@@ -135,23 +169,20 @@ public class Register extends AppCompatActivity {
         }
 
         if(!TextUtils.isEmpty(password.getText().toString())) {
-            user.setPassword(password.getText().toString().trim());
+            get_password = password.getText().toString().trim();
         } else {
             password.setError(getString(R.string.empty_field));
         }
 
-        if(!confirm_password.getText().toString().equals(user.getPassword())) {
+        if(!confirm_password.getText().toString().equals(get_password)) {
             confirm_password.setError(getString(R.string.mismatch));
             error++;
         }
 
-        if(!TextUtils.isEmpty(confirm_password.getText().toString())) {
-            user.setConfirm_password(confirm_password.getText().toString().trim());
-        } else {
+        if(TextUtils.isEmpty(confirm_password.getText().toString())) {
             confirm_password.setError(getString(R.string.empty_field));
             error++;
         }
-
 
         switch (gender.getCheckedRadioButtonId()) {
             case R.id.male: {
@@ -184,10 +215,6 @@ public class Register extends AppCompatActivity {
             error++;
             Toast.makeText(getApplicationContext(),getString(R.string.bg_required),Toast.LENGTH_SHORT).show();
         }
-
-        Toast.makeText(getApplicationContext(),String.valueOf(error),Toast.LENGTH_SHORT).show();
-
-
 
     }
 }

@@ -17,16 +17,12 @@ import android.widget.Toast;
 import com.creativitude.jeewa.Login;
 import com.creativitude.jeewa.R;
 
-import java.util.Locale;
-
 public class Drawer extends AppCompatActivity {
 
     protected DrawerLayout drawerLayout;
     protected int item_id;
     protected Toolbar toolbar;
     protected NavigationView navigationView;
-    Locale myLocale;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

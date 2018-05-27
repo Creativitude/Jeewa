@@ -48,6 +48,8 @@
     <string name="via_jeeva"></string>
     <string name="db_donations_today">අද දවසේ පරිත්‍යාග</string>
     <string name="db_btn_see_requests">ඉල්ලීම් බලන්න</string>
+    <string name="content">content description</string>
+    <string name="offline_login">උපාංගය අන්තර්ජාලයට සම්බන්ධ වී නැත</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>
@@ -86,14 +88,14 @@
 
     <string-array name="blood_groups">
         <item>රුධිර ගණය තෝරන්න</item>
-        <item>A +</item>
-        <item>A -</item>
-        <item>B +</item>
-        <item>B -</item>
-        <item>AB +</item>
-        <item>AB -</item>
-        <item>O +</item>
-        <item>O -</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
     </string-array>
 
 </resources>
