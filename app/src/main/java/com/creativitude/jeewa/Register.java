@@ -78,7 +78,6 @@ public class Register extends AppCompatActivity {
 
     }
 
-
     public void register(View view) {
 
         alert = new Alert(Register.this);
@@ -98,7 +97,10 @@ public class Register extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
 
                             store_firebase(user);
-                            store_local(user);
+                            store_local();
+
+                            alert.hideAlert();
+                            startActivity(new Intent(Register.this,Login.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -117,23 +119,9 @@ public class Register extends AppCompatActivity {
     private void store_firebase(FirebaseUser user) {
 
         DatabaseReference userRef = database.getReference("Users");
-
-        userRef.child(user.getUid()).setValue(this.user).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()) {
-                    alert.hideAlert();
-
-//                    Toast.makeText(getApplicationContext(),"")
-
-                } else {
-                    alert.hideAlert();
-                }
-            }
-        });
+        userRef.child(user.getUid()).setValue(this.user);
     }
-
-    private void store_local(FirebaseUser user) {
+    private void store_local() {
 
 
 
