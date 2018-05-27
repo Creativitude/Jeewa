@@ -41,6 +41,8 @@
     <string name="distric_required">Distric should be selected</string>
     <string name="gender_required">Gender field is required</string>
     <string name="bg_required">Blood group should be selected</string>
+    <string name="content">content description</string>
+    <string name="offline_login">Device is offline</string>
 
     <string-array name="langs">
         <item>Choose Language</item>
@@ -79,13 +81,13 @@
 
     <string-array name="blood_groups">
         <item>Select Blood Group</item>
-        <item>A +</item>
-        <item>A -</item>
-        <item>B +</item>
-        <item>B -</item>
-        <item>AB +</item>
-        <item>AB -</item>
-        <item>O +</item>
-        <item>O -</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
     </string-array>
 </resources>

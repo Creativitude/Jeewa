@@ -42,6 +42,8 @@
     <string name="distric_required">දිස්ත්රික්කය තෝරා ගත යුතුය</string>
     <string name="gender_required">ස්ත්‍රී/පුරුෂ භාවය තෝරා ගත යුතුය</string>
     <string name="bg_required">රුධිර ගණය තෝරා ගත යුතුය</string>
+    <string name="content">content description</string>
+    <string name="offline_login">උපාංගය අන්තර්ජාලයට සම්බන්ධ වී නැත</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>
@@ -80,14 +82,14 @@
 
     <string-array name="blood_groups">
         <item>රුධිර ගණය තෝරන්න</item>
-        <item>A +</item>
-        <item>A -</item>
-        <item>B +</item>
-        <item>B -</item>
-        <item>AB +</item>
-        <item>AB -</item>
-        <item>O +</item>
-        <item>O -</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
     </string-array>
 
 </resources>
