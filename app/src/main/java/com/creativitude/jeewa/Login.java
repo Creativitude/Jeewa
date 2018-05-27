@@ -102,8 +102,7 @@ public class Login extends AppCompatActivity {
                             alert.hideAlert();
 
                             startActivity(new Intent(Login.this, Dashboard.class));
-                            alert.hideAlert();
-                            startActivity(new Intent(Login.this, Dashboard.class));
+                            finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
