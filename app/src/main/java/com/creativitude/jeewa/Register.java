@@ -110,8 +110,8 @@ public class Register extends AppCompatActivity {
                             alert.hideAlert();
                         }
 
-                    }
-                });
+                        }
+                    });
         }
 
     }
@@ -121,10 +121,8 @@ public class Register extends AppCompatActivity {
         DatabaseReference userRef = database.getReference("Users");
         userRef.child(user.getUid()).setValue(this.user);
     }
+  
     private void store_local() {
-
-
-
     }
 
     public void registerToLogin(View view) {
@@ -170,12 +168,12 @@ public class Register extends AppCompatActivity {
             password.setError(getString(R.string.empty_field));
         }
 
-        if(!confirm_password.getText().toString().equals(get_password)) {
+        if (!confirm_password.getText().toString().equals(get_password)) {
             confirm_password.setError(getString(R.string.mismatch));
             error++;
         }
 
-        if(TextUtils.isEmpty(confirm_password.getText().toString())) {
+        if (TextUtils.isEmpty(confirm_password.getText().toString())) {
             confirm_password.setError(getString(R.string.empty_field));
             error++;
         }

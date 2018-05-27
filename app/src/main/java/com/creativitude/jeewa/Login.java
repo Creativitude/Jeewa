@@ -70,23 +70,23 @@ public class Login extends AppCompatActivity {
         error = 0;
         validateInputs();
 
-        if(error == 0) {
+        if (error == 0) {
 
             Connectivity connectivity = new Connectivity(this);
 
-            if(connectivity.isOnline()) {
+            if (connectivity.isOnline()) {
                 firebaseLogin();
             } else {
                 localLogin();
             }
 
         }
-        
+
     }
 
 
     private void localLogin() {
-        Toast.makeText(getApplicationContext(),getString(R.string.offline_login),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.offline_login), Toast.LENGTH_SHORT).show();
     }
 
     private void firebaseLogin() {
@@ -99,9 +99,9 @@ public class Login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-
                             alert.hideAlert();
-                            startActivity(new Intent(Login.this,MainActivity.class));
+
+                            startActivity(new Intent(Login.this, Dashboard.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -117,14 +117,14 @@ public class Login extends AppCompatActivity {
 
     private void validateInputs() {
 
-        if(!TextUtils.isEmpty(email.getText().toString())) {
+        if (!TextUtils.isEmpty(email.getText().toString())) {
             getEmail = email.getText().toString().trim();
         } else {
             email.setError(getString(R.string.empty_field));
             error++;
         }
 
-        if(!TextUtils.isEmpty(password.getText().toString())) {
+        if (!TextUtils.isEmpty(password.getText().toString())) {
             getPassword = password.getText().toString().trim();
         } else {
             password.setError(getString(R.string.empty_field));
