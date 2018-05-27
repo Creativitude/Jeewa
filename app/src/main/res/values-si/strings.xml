@@ -50,6 +50,10 @@
     <string name="db_btn_see_requests">ඉල්ලීම් බලන්න</string>
     <string name="content">content description</string>
     <string name="offline_login">උපාංගය අන්තර්ජාලයට සම්බන්ධ වී නැත</string>
+    <string name="rc_district">දිස්ත්‍රික්කය</string>
+    <string name="rc_contact">අමතන්න</string>
+    <string name="blood_needed">රුධිරය අවශ්‍යයි</string>
+    <string name="call_now">දැන් ම අමතන්න</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>

@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:src="@drawable/full_logo"
-        android:contentDescription="@string/content" />
+        android:contentDescription="@string/content"
+        android:src="@drawable/full_logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,8 +57,8 @@
             android:layout_marginTop="20dp"
             android:text="@string/login_btn_login"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:onClick="onClickLogin"/>
+            android:onClick="onClickLogin"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/login_btn_register"

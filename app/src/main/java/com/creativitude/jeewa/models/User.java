@@ -18,7 +18,7 @@ public class User {
         // default constructor
     }
 
-    public User (String name, String age, String contact_no, String district, String bg, String gender, String email) {
+    public User(String name, String age, String contact_no, String district, String bg, String gender, String email) {
         this.name = name;
         this.age = age;
         this.contact_no = contact_no;

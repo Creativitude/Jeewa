@@ -84,25 +84,25 @@ public class Register extends AppCompatActivity {
         if (error == 0) {
 
             mAuth.createUserWithEmailAndPassword(user.getEmail(), get_password)
-                .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //                            updateUI(user);
-                            store_firebase(user);
-                            store_local(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(Register.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                    .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "createUserWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                //                            updateUI(user);
+                                store_firebase(user);
+                                store_local(user);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                Toast.makeText(Register.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
 
-                    }
-                });
+                        }
+                    });
         }
 
     }
@@ -114,12 +114,12 @@ public class Register extends AppCompatActivity {
         userRef.child(user.getUid()).setValue(this.user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
 
 //                    Toast.makeText(getApplicationContext(),"")
 
                 } else {
-                    
+
                 }
             }
         });
@@ -174,12 +174,12 @@ public class Register extends AppCompatActivity {
             password.setError(getString(R.string.empty_field));
         }
 
-        if(!confirm_password.getText().toString().equals(get_password)) {
+        if (!confirm_password.getText().toString().equals(get_password)) {
             confirm_password.setError(getString(R.string.mismatch));
             error++;
         }
 
-        if(TextUtils.isEmpty(confirm_password.getText().toString())) {
+        if (TextUtils.isEmpty(confirm_password.getText().toString())) {
             confirm_password.setError(getString(R.string.empty_field));
             error++;
         }
