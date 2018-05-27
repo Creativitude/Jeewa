@@ -42,6 +42,12 @@
     <string name="distric_required">දිස්ත්රික්කය තෝරා ගත යුතුය</string>
     <string name="gender_required">ස්ත්‍රී/පුරුෂ භාවය තෝරා ගත යුතුය</string>
     <string name="bg_required">රුධිර ගණය තෝරා ගත යුතුය</string>
+    <string name="hello_superhero">ආයුබෝවන්,</string>
+    <string name="db_lives_saved">සුරැකි ජීවිත</string>
+    <string name="db_times_donated">පරිත්‍යාග වාර ගණන</string>
+    <string name="via_jeeva"></string>
+    <string name="db_donations_today">අද දවසේ පරිත්‍යාග</string>
+    <string name="db_btn_see_requests">ඉල්ලීම් බලන්න</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>

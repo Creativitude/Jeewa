@@ -21,6 +21,8 @@ public class Dashboard extends Drawer {
         @SuppressLint("InflateParams") View contentView = inflater.inflate(R.layout.dashboard, null, false);
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.home);
+
+        getSupportActionBar().setTitle("");
     }
 
     @Override

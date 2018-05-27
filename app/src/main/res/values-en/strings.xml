@@ -42,6 +42,12 @@
     <string name="distric_required">Distric should be selected</string>
     <string name="gender_required">Gender field is required</string>
     <string name="bg_required">Blood group should be selected</string>
+    <string name="hello_superhero">Hello,</string>
+    <string name="db_lives_saved">Lives Saved</string>
+    <string name="db_times_donated">Times Donated</string>
+    <string name="via_jeeva">via</string>
+    <string name="db_donations_today">Donations Today</string>
+    <string name="db_btn_see_requests">See Requests</string>
 
 
     <string-array name="langs">
