@@ -6,18 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:theme="@style/AppTheme2"
     tools:openDrawer="start">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme2"
         tools:context="com.creativitude.jeewa.activity.Drawer">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:theme="@style/AppTheme2">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
