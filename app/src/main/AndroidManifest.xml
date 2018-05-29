@@ -28,15 +28,23 @@
             android:name=".Login"
             android:configChanges="locale|orientation"
             android:theme="@style/AppTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Register"
             android:label="@string/label_register"
+            android:theme="@style/AppTheme">
+
+        </activity>
+        <activity
+            android:name=".activity.CreatePost"
+            android:label="Create Post"
             android:theme="@style/AppTheme">
 
         </activity>
