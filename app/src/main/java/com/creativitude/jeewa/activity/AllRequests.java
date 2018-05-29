@@ -2,8 +2,10 @@ package com.creativitude.jeewa.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +19,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class AllRequests extends Drawer implements AdapterView.OnItemClickListener {
+public class AllRequests extends Drawer implements AdapterView.OnItemClickListener,View.OnClickListener {
 
     private RecyclerView rvAllRequests;
     private DatabaseReference postsRef;
@@ -38,6 +40,26 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
         linearLayoutManager.setStackFromEnd(false);
         linearLayoutManager.setSmoothScrollbarEnabled(true);
         rvAllRequests.setLayoutManager(linearLayoutManager);
+
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(
+                rvAllRequests.getContext(),
+                linearLayoutManager.getOrientation()
+        );
+
+        itemDecoration.setDrawable(
+                ContextCompat.getDrawable(
+                        AllRequests.this,
+                        R.drawable.divider_item_decorator
+                )
+        );
+
+        rvAllRequests.addItemDecoration(
+                itemDecoration
+        );
+
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.addNewPost);
+        floatingActionButton.setOnClickListener(this);
 
         postsRef = FirebaseDatabase.getInstance().getReference("Posts");
 
@@ -69,6 +91,7 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                 viewHolder.setDistrict(model.getArea());
                 viewHolder.setOptionalMessage(model.getOptionalMessage());
                 viewHolder.setCallNow(model.getContactNumber());
+                viewHolder.setPriority(model.getPriority());
 
             }
         };
@@ -83,9 +106,17 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
 
     }
 
-    public void onClickAddNewPost(View view) {
+    @Override
+    public void onClick(View view) {
+        int viewId = view.getId();
 
-        startActivity(new Intent(AllRequests.this,CreatePost.class));
+        switch (viewId) {
 
+            case R.id.addNewPost: {
+
+
+
+            }
+        }
     }
 }

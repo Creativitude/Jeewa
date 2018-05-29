@@ -31,7 +31,6 @@
         android:clickable="true"
         android:focusable="true"
         android:src="@android:drawable/ic_input_add"
-        style="@style/FloatingActionButton"
-        android:onClick="onClickAddNewPost"/>
+        style="@style/FloatingActionButton" />
 
 </RelativeLayout>

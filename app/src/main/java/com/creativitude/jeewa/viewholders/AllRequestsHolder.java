@@ -1,5 +1,6 @@
 package com.creativitude.jeewa.viewholders;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class AllRequestsHolder extends RecyclerView.ViewHolder{
     private final TextView district;
     private final TextView contactPerson;
     private final Button callNow;
+    private final CardView priority;
 
     public AllRequestsHolder(View itemView) {
         super(itemView);
@@ -27,6 +29,7 @@ public class AllRequestsHolder extends RecyclerView.ViewHolder{
         district = itemView.findViewById(R.id.tv_rc_area);
         contactPerson = itemView.findViewById(R.id.tv_rc_relationsName);
         callNow = itemView.findViewById(R.id.btn_rc_call);
+        priority = itemView.findViewById(R.id.card_rc_priority);
     }
 
     public void setBloodType(String bloodType) {
@@ -46,6 +49,10 @@ public class AllRequestsHolder extends RecyclerView.ViewHolder{
 
     public void setCallNow (String number) {
         this.callNow.setTag(number);
+    }
+
+    public void setPriority (String priority) {
+//        priority.
     }
 
 
