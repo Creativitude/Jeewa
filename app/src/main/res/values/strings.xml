@@ -53,6 +53,12 @@
     <string name="rc_contact">Contact</string>
     <string name="blood_needed">Blood Needed</string>
     <string name="call_now">Call Now</string>
+    <string name="details_of_blood_recipient">Details of the Blood Recipient</string>
+    <string name="new_post_priority">Priority</string>
+    <string name="new_post_message_optional">Message (Optional)</string>
+    <string name="new_post_message_hint">Limit to 60 characters or less</string>
+    <string name="new_post_posted_by">Posted By</string>
+    <string name="new_post_relationship">Relationship</string>
 
     <string-array name="langs">
         <item>Choose Language</item>
@@ -100,4 +106,19 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
+
+    <string-array name="relationships">
+        <item>Select Relationship</item>
+        <item>Father</item>
+        <item>Mother</item>
+        <item>Sister</item>
+        <item>Brother</item>
+        <item>Daughter</item>
+        <item>Son</item>
+        <item>Other Relative</item>
+        <item>Friend</item>
+        <item>Acquaintance</item>
+        <item>Other</item>
+    </string-array>
+
 </resources>

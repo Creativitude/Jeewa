@@ -54,6 +54,12 @@
     <string name="rc_contact">අමතන්න</string>
     <string name="blood_needed">රුධිරය අවශ්‍යයි</string>
     <string name="call_now">දැන් ම අමතන්න</string>
+    <string name="details_of_blood_recipient">රුධිර ප්‍රතිග්‍රාහකයාගේ තොරතුරු</string>
+    <string name="new_post_priority">ප්‍රමුඛත්වය</string>
+    <string name="new_post_message_optional">පණිවිඩය (අතිරේක)</string>
+    <string name="new_post_message_hint">අකුරු 60කට හෝ ඊට අඩු ගණනකට සීමා කරන්න</string>
+    <string name="new_post_posted_by">පළ කරන ලද්දේ</string>
+    <string name="new_post_relationship">Relationship</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>
@@ -100,6 +106,20 @@
         <item>AB-</item>
         <item>O+</item>
         <item>O-</item>
+    </string-array>
+
+    <string-array name="relationships">
+        <item>ඥාතිත්වය තෝරන්න</item>
+        <item>මව</item>
+        <item>පියා</item>
+        <item>සහෝදරිය</item>
+        <item>සහෝදරයා</item>
+        <item>දුව</item>
+        <item>පුතා</item>
+        <item>වෙනත් ඥාතියෙකු</item>
+        <item>යහළුවෙකු</item>
+        <item>හඳුනන්නෙකු</item>
+        <item>වෙනත්</item>
     </string-array>
 
 </resources>
