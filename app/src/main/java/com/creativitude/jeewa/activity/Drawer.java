@@ -58,7 +58,7 @@ public class Drawer extends AppCompatActivity {
                     case R.id.requests:
                         Toast.makeText(getApplicationContext(), "Requests", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
-//                        startActivity(new Intent(getApplicationContext(),MainMenuActivity.class));
+                        startActivity(AllRequests.class);
                         break;
 
                     case R.id.my_requests:
@@ -160,7 +160,7 @@ public class Drawer extends AppCompatActivity {
             public void run() {
                 startActivity(new Intent(getApplicationContext(), toClass));
             }
-        }, 200);
+        }, 20);
 
     }
 

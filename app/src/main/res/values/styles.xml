@@ -19,4 +19,8 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="FloatingActionButton" parent="Widget.Design.FloatingActionButton">
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
 </resources>
