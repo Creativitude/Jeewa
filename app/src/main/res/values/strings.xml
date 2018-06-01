@@ -59,6 +59,15 @@
     <string name="new_post_message_hint">Limit to 60 characters or less</string>
     <string name="new_post_posted_by">Posted By</string>
     <string name="new_post_relationship">Relationship</string>
+    <string name="share">Share</string>
+    <string name="post">Post</string>
+    <string name="relationship_required">Relationship field should be selected</string>
+    <string name="device_offline">Device is offline</string>
+    <string name="back_online">Device is back online</string>
+    <string name="post_success">Post successfully added !</string>
+    <string name="post_unsuccess">Post could not be added. Please try again !</string>
+    <string name="create_post">Create New Post</string>
+    <string name="empty_view">There are no posts to display !</string>
 
     <string-array name="langs">
         <item>Choose Language</item>

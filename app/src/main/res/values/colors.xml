@@ -5,5 +5,8 @@
     <color name="colorAccent">#bdbdbd</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="sb_green">#009900</color>
+    <color name="sb_red">#cc0000</color>
+    <color name="fab_red">#ff6666</color>
     <color name="colorAccentLight">#FAFAFA</color>
 </resources>

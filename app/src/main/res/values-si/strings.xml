@@ -45,7 +45,7 @@
     <string name="hello_superhero">ආයුබෝවන්,</string>
     <string name="db_lives_saved">සුරැකි ජීවිත</string>
     <string name="db_times_donated">පරිත්‍යාග වාර ගණන</string>
-    <string name="via_jeeva"></string>
+    <string name="via_jeeva"/>
     <string name="db_donations_today">අද දවසේ පරිත්‍යාග</string>
     <string name="db_btn_see_requests">ඉල්ලීම් බලන්න</string>
     <string name="content">content description</string>
@@ -59,7 +59,16 @@
     <string name="new_post_message_optional">පණිවිඩය (අතිරේක)</string>
     <string name="new_post_message_hint">අකුරු 60කට හෝ ඊට අඩු ගණනකට සීමා කරන්න</string>
     <string name="new_post_posted_by">පළ කරන ලද්දේ</string>
-    <string name="new_post_relationship">Relationship</string>
+    <string name="new_post_relationship">සම්බන්ධතාවය</string>
+    <string name="share">බෙදාහරින්න</string>
+    <string name="post">තහවුරු කරන්න</string>
+    <string name="relationship_required">සම්බන්ධතාවය ඇතුලත් කිරීම අනිවාර්ය වේ</string>
+    <string name="device_offline">අන්තර්ජාල සම්බන්ධය විසන්ධි විය</string>
+    <string name="back_online">නැවත අන්තර්ජාලය සමග සම්බන්ධය විය</string>
+    <string name="post_success">Post successfully added !</string>
+    <string name="post_unsuccess">Post could not be added. Please try again !</string>
+    <string name="create_post">Create New Post</string>
+    <string name="empty_view">There are no posts to dsplay !</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>

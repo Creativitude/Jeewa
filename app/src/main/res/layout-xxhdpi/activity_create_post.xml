@@ -49,7 +49,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:inputType="text"/>
 
             </LinearLayout>
 
@@ -211,7 +212,8 @@
                     android:id="@+id/iv_cp_priorityTip"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/help_24" />
+                    android:src="@drawable/help_24"
+                    android:contentDescription="@string/content"/>
 
             </LinearLayout>
 
@@ -312,7 +314,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:inputType="text"/>
 
 
             </LinearLayout>
@@ -361,8 +364,10 @@
                 android:drawableTint="@color/colorPrimary"
                 android:paddingEnd="30dp"
                 android:paddingStart="30dp"
-                android:text="Share"
-                android:textColor="@color/colorPrimary" />
+                android:text="@string/share"
+                android:textColor="@color/colorPrimary"
+                android:drawableStart="@drawable/fb_share_icon"
+                tools:targetApi="m" />
 
             <Button
                 android:id="@+id/btn_cp_post"
@@ -374,8 +379,10 @@
                 android:drawableTint="@color/colorPrimary"
                 android:paddingEnd="30dp"
                 android:paddingStart="30dp"
-                android:text="Post"
-                android:textColor="@color/colorPrimary" />
+                android:text="@string/post"
+                android:textColor="@color/colorPrimary"
+                android:drawableStart="@drawable/post_icon"
+                tools:targetApi="m" />
 
         </LinearLayout>
 

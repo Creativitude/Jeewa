@@ -28,11 +28,13 @@ public class Alert {
         dialogBuilder.setView(dialogView);
 
         alertDialog = dialogBuilder.create();
+        alertDialog.setCancelable(false);
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
     }
 
     public void hideAlert() {
-        alertDialog.hide();
+        alertDialog.dismiss();
     }
 
 

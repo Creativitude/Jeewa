@@ -19,8 +19,13 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="CallNowButtonTheme" parent="Base.Widget.AppCompat.Button">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+
     <style name="FloatingActionButton" parent="Widget.Design.FloatingActionButton">
-        <item name="backgroundTint">@color/white</item>
+        <item name="backgroundTint">@color/fab_red</item>
     </style>
 
 </resources>

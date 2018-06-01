@@ -16,13 +16,6 @@
         <activity
             android:name=".Dashboard"
             android:configChanges="locale|orientation">
-
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".Login"
@@ -40,6 +33,18 @@
             android:theme="@style/AppTheme">
 
         </activity>
+        <activity android:name=".activity.AllRequests"
+            android:theme="@style/AppTheme2"
+            android:label="@string/requests">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.CreatePost"
+            android:label="@string/create_post"/>
         <!--<activity android:name=".activity.Drawer" />-->
     </application>
 

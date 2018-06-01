@@ -2,27 +2,46 @@ package com.creativitude.jeewa.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.animation.DynamicAnimation;
+import android.support.animation.SpringAnimation;
+import android.support.animation.SpringForce;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.creativitude.jeewa.R;
+import com.creativitude.jeewa.helpers.Alert;
+import com.creativitude.jeewa.helpers.Connectivity;
 import com.creativitude.jeewa.models.Post;
 import com.creativitude.jeewa.viewholders.AllRequestsHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Random;
+
 public class AllRequests extends Drawer implements AdapterView.OnItemClickListener,View.OnClickListener {
 
     private RecyclerView rvAllRequests;
     private DatabaseReference postsRef;
+    private Connectivity connectivity;
+    private Alert loader;
+    private boolean emptyViewCheck;
+    private TextView emptyView;
+    private Paint paint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +53,14 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.requests);
 
+        connectivity = new Connectivity(this);
+        loader = new Alert(AllRequests.this);
+        emptyViewCheck = true;
+        emptyView = findViewById(R.id.allRequestsEmptyView);
+        paint = new Paint();
+
         rvAllRequests = findViewById(R.id.rvAllRequests);
-        rvAllRequests.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AllRequests.this);
-        linearLayoutManager.setStackFromEnd(false);
         linearLayoutManager.setSmoothScrollbarEnabled(true);
         rvAllRequests.setLayoutManager(linearLayoutManager);
 
@@ -63,19 +86,27 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
 
         postsRef = FirebaseDatabase.getInstance().getReference("Posts");
 
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(createHelperCallback());
+        itemTouchHelper.attachToRecyclerView(rvAllRequests);
+
 
 
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
         navigationView.setCheckedItem(R.id.requests);
+        connectivity.checkConnectionState(navigationView);
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        loader.showAlert();
+
 
         FirebaseRecyclerAdapter<Post, AllRequestsHolder> allRequestAdapter = new FirebaseRecyclerAdapter<Post, AllRequestsHolder>(
                 Post.class,
@@ -86,6 +117,11 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
             @Override
             protected void populateViewHolder(AllRequestsHolder viewHolder, Post model, int position) {
 
+                emptyViewCheck = false;
+                if (emptyView.getVisibility() == View.VISIBLE){
+                    emptyView.setVisibility(View.GONE);
+                }
+
                 viewHolder.setBloodType(model.getBloodGroup());
                 viewHolder.setContactPerson(model.getContactPerson());
                 viewHolder.setDistrict(model.getArea());
@@ -93,10 +129,25 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                 viewHolder.setCallNow(model.getContactNumber());
                 viewHolder.setPriority(model.getPriority());
 
+                Random random = new Random();
+                viewHolder.itemView.setId(random.nextInt(100000)+1);
+
+            }
+
+            @Override
+            protected void onDataChanged() {
+                super.onDataChanged();
+
+                if(emptyViewCheck) {
+                    emptyView.setVisibility(View.VISIBLE);
+                }
+                loader.hideAlert();
+
+
             }
         };
-
         rvAllRequests.setAdapter(allRequestAdapter);
+
     }
 
     @Override
@@ -114,9 +165,76 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
 
             case R.id.addNewPost: {
 
+                startActivity(new Intent(AllRequests.this,CreatePost.class));
+                break;
+            }
+        }
+    }
+
+
+    private ItemTouchHelper.Callback createHelperCallback() {
+
+        return new ItemTouchHelper.SimpleCallback(
+                0, //drag to reposition cancel
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT
+        ) {
+            @Override //not implementing because the reposition is cancelled (dragDirs = 0)
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+//                int position = viewHolder.getAdapterPosition();
+
+//                onItemSwipe(direction);
+
+//                AnimateSwipe.animateLeftSwipe(viewHolder.itemView);
 
 
             }
-        }
+
+            @Override
+            public void onChildDraw(Canvas c, final RecyclerView recyclerView, final RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+
+                try {
+                    if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                        final View itemView = viewHolder.itemView;
+
+                        Toast.makeText(getApplicationContext(),String.valueOf(itemView.getId()),Toast.LENGTH_SHORT).show();
+                        itemView.setTranslationX(dX/3);
+
+
+                        SpringAnimation animation = new SpringAnimation(itemView, DynamicAnimation.TRANSLATION_X,0);
+                        animation.getSpring().setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY)
+                                .setStiffness(SpringForce.STIFFNESS_HIGH);
+
+
+                        animation.start();
+                        animation.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
+                            @Override
+                            public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
+                                animation.cancel();
+                            }
+                        });
+
+
+                    } else {
+                        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        };
+
+    }
+
+    private void onItemSwipe(int direction) {
+
+        Snackbar.make(navigationView,String.valueOf(direction),Snackbar.LENGTH_LONG).show();
     }
 }
