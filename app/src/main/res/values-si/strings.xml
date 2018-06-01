@@ -69,6 +69,14 @@
     <string name="post_unsuccess">Post could not be added. Please try again !</string>
     <string name="create_post">Create New Post</string>
     <string name="empty_view">There are no posts to dsplay !</string>
+    <string name="new_post_relationship">ඥාතිත්වය</string>
+    <string name="tv_rp_message">පණිවිඩය</string>
+    <string name="tv_rp_date">දිනය</string>
+    <string name="i_am_a_donor">මම රුධිර දායකයෙක් වෙමි</string>
+    <string name="notify_my_blood_group_only">මට මගේ රුධිර ගණයට සම්බන්ධ නිවේදන පමණක් එවන්න</string>
+    <string name="accept_terms_conditions">මම සේවයට අදාළ කොන්දේසි පිළිගනිමි</string>
+    <string name="responses">ප්‍රතිචාර</string>
+    <string name="date_posted">පළ කළ දිනය</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>
