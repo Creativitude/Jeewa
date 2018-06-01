@@ -59,6 +59,13 @@
     <string name="new_post_message_hint">Limit to 60 characters or less</string>
     <string name="new_post_posted_by">Posted By</string>
     <string name="new_post_relationship">Relationship</string>
+    <string name="tv_rp_message">Message</string>
+    <string name="tv_rp_date">Date</string>
+    <string name="i_am_a_donor">I am a Donor</string>
+    <string name="notify_my_blood_group_only">Send me notifications related to my Blood Group only</string>
+    <string name="accept_terms_conditions">I accept Terms and Conditions of the Service</string>
+    <string name="responses">Responses</string>
+    <string name="date_posted">Date Posted</string>
 
     <string-array name="langs">
         <item>Choose Language</item>

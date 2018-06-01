@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginTop="25dp"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_res_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="2dp"
+        android:text="@string/register_name"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:id="@+id/tv_res_bloodGroup"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:padding="2dp"
+        android:text="@string/register_blood_group"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:id="@+id/tv_res_district"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="2dp"
+        android:text="@string/register_district"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/divider6"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="?android:attr/listDivider" />
+
+    <ImageButton
+        android:id="@+id/btn_res_call"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:padding="2dp"
+        android:src="@drawable/call_icon"
+        android:tint="@color/colorPrimary" />
+
+</LinearLayout>

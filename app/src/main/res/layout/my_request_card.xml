@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="60dp">
+    android:paddingTop="10dp">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_margin="10dp"
         app:cardElevation="11dp">
 
@@ -42,21 +42,6 @@
 
                 </android.support.v7.widget.CardView>
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    app:cardElevation="7dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:padding="2dp"
-                        android:text="@string/blood_needed"
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
-
-                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 
@@ -70,12 +55,6 @@
                 android:paddingRight="5dp"
                 android:paddingTop="5dp">
 
-                <TextView
-                    android:id="@+id/tv_rc_msg"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="AB+adskjsnsknsknjksdnnsdjvkvnsdvsknsnvksnjskjjkdkll.hkjsjdhajkajkskd" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -87,16 +66,16 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/rc_district"
+                        android:layout_weight="0.7"
+                        android:text="@string/responses"
                         android:textColor="@color/black" />
 
                     <TextView
-                        android:id="@+id/tv_rc_area"
+                        android:id="@+id/tv_mrc_noOfResponses"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Kandy" />
+                        android:text="11" />
 
                 </LinearLayout>
 
@@ -109,32 +88,38 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/rc_contact"
+                        android:layout_weight="0.7"
+                        android:text="@string/date_posted"
                         android:textColor="@color/black" />
 
                     <TextView
-                        android:id="@+id/tv_rc_relationsName"
+                        android:id="@+id/tv_mrc_datePosted"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Nimal Edirisinghe" />
+                        android:text="2018.04.30" />
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/btn_rc_call"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@color/icon_tint"
-                    android:drawableLeft="@drawable/call_icon"
-                    android:drawableTint="@color/colorPrimary"
-                    android:paddingEnd="30dp"
-                    android:paddingStart="30dp"
-                    android:text="@string/call_now"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="18sp" />
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="0.7"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="0.7"-->
+                <!--android:text="Status"-->
+                <!--android:textColor="@color/black" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/tv_mrc_status"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="Accepted" />-->
+                <!--</LinearLayout>-->
 
             </LinearLayout>
 
