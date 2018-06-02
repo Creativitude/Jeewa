@@ -16,12 +16,13 @@ public class Post {
     private String relationship;
     private String optionalMessage;
     private String priority;
+    private String date;
 
 
     public Post() {
     }
 
-    public Post(String name, String area, String gender, String bloodGroup, String age, String contactPerson, String contactNumber, String relationship, String optionalMessage, String priority) {
+    public Post(String name, String area, String gender, String bloodGroup, String age, String contactPerson, String contactNumber, String relationship, String optionalMessage, String priority,String date) {
         this.name = name;
         this.area = area;
         this.gender = gender;
@@ -32,6 +33,7 @@ public class Post {
         this.relationship = relationship;
         this.optionalMessage = optionalMessage;
         this.priority = priority;
+        this.date = date;
     }
 
     public String getName() {
@@ -112,5 +114,13 @@ public class Post {
 
     public void setPriority(String priority) {
         this.priority = priority;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

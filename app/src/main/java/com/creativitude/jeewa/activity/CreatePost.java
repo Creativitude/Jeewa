@@ -17,6 +17,7 @@ import android.widget.Spinner;
 
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.helpers.Connectivity;
+import com.creativitude.jeewa.helpers.CurrentDate;
 import com.creativitude.jeewa.models.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -127,6 +128,8 @@ public class CreatePost extends Drawer implements View.OnClickListener {
     private void storeInFirebaseDb() {
 
         DatabaseReference postRef = rootRef.getReference("Posts").push();
+
+        post.setDate(CurrentDate.getDate());
 
         postRef.setValue(this.post).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -247,6 +250,7 @@ public class CreatePost extends Drawer implements View.OnClickListener {
             Snackbar.make(navigationView,getString(R.string.relationship_required),Snackbar.LENGTH_SHORT).show();
 
         }
+
     }
 
 }

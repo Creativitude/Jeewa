@@ -19,5 +19,12 @@ public class AnimateSwipe {
 
 
         animation.start();
+
+        animation.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
+            @Override
+            public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
+                animation.cancel();
+            }
+        });
     }
 }

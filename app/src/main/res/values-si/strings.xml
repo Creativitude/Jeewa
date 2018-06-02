@@ -59,7 +59,6 @@
     <string name="new_post_message_optional">පණිවිඩය (අතිරේක)</string>
     <string name="new_post_message_hint">අකුරු 60කට හෝ ඊට අඩු ගණනකට සීමා කරන්න</string>
     <string name="new_post_posted_by">පළ කරන ලද්දේ</string>
-    <string name="new_post_relationship">සම්බන්ධතාවය</string>
     <string name="share">බෙදාහරින්න</string>
     <string name="post">තහවුරු කරන්න</string>
     <string name="relationship_required">සම්බන්ධතාවය ඇතුලත් කිරීම අනිවාර්ය වේ</string>
@@ -77,6 +76,11 @@
     <string name="accept_terms_conditions">මම සේවයට අදාළ කොන්දේසි පිළිගනිමි</string>
     <string name="responses">ප්‍රතිචාර</string>
     <string name="date_posted">පළ කළ දිනය</string>
+    <string name="posted_by">Posted By</string>
+    <string name="accept">Accept</string>
+    <string name="blood_urgent">Blood needed within 2 days !</string>
+    <string name="blood_somewhat_urgent">Blood needed within 7 days !</string>
+    <string name="blood_not_urgent">Blood needed within 1 month !</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>

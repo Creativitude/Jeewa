@@ -76,6 +76,11 @@
     <string name="accept_terms_conditions">I accept Terms and Conditions of the Service</string>
     <string name="responses">Responses</string>
     <string name="date_posted">Date Posted</string>
+    <string name="posted_by">Posted By</string>
+    <string name="accept">Accept</string>
+    <string name="blood_urgent">Blood needed within 2 days !</string>
+    <string name="blood_somewhat_urgent">Blood needed within 7 days !</string>
+    <string name="blood_not_urgent">Blood needed within 1 month !</string>
 
 
     <string-array name="langs">

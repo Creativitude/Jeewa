@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.support.animation.DynamicAnimation;
-import android.support.animation.SpringAnimation;
-import android.support.animation.SpringForce;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -20,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.helpers.Alert;
@@ -30,8 +26,6 @@ import com.creativitude.jeewa.viewholders.AllRequestsHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Random;
 
 public class AllRequests extends Drawer implements AdapterView.OnItemClickListener,View.OnClickListener {
 
@@ -63,6 +57,7 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AllRequests.this);
         linearLayoutManager.setSmoothScrollbarEnabled(true);
         rvAllRequests.setLayoutManager(linearLayoutManager);
+        rvAllRequests.setOnClickListener(this);
 
         DividerItemDecoration itemDecoration = new DividerItemDecoration(
                 rvAllRequests.getContext(),
@@ -88,7 +83,6 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(createHelperCallback());
         itemTouchHelper.attachToRecyclerView(rvAllRequests);
-
 
 
     }
@@ -122,6 +116,8 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                     emptyView.setVisibility(View.GONE);
                 }
 
+                final String post_id = getRef(position).getKey();
+
                 viewHolder.setBloodType(model.getBloodGroup());
                 viewHolder.setContactPerson(model.getContactPerson());
                 viewHolder.setDistrict(model.getArea());
@@ -129,8 +125,15 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                 viewHolder.setCallNow(model.getContactNumber());
                 viewHolder.setPriority(model.getPriority());
 
-                Random random = new Random();
-                viewHolder.itemView.setId(random.nextInt(100000)+1);
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        fullCardOnClick(view,post_id);
+                    }
+                });
+
+//                Random random = new Random();
+//                viewHolder.itemView.setId(random.nextInt(100000)+1);
 
             }
 
@@ -142,18 +145,28 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                     emptyView.setVisibility(View.VISIBLE);
                 }
                 loader.hideAlert();
-
-
             }
         };
+
         rvAllRequests.setAdapter(allRequestAdapter);
+
+    }
+
+    private void fullCardOnClick(View view,String key) {
+
+        Intent intent = new Intent(AllRequests.this, RequestPost.class);
+        intent.putExtra("POST_ID",key);
+//        Bundle options = ActivityOptionsCompat.makeScaleUpAnimation(
+//                view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
+//
+//        ActivityCompat.startActivity(AllRequests.this, intent, options);
+
+        startActivity(intent);
 
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
 
     }
 
@@ -168,6 +181,7 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                 startActivity(new Intent(AllRequests.this,CreatePost.class));
                 break;
             }
+
         }
     }
 
@@ -186,12 +200,7 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
 
-//                int position = viewHolder.getAdapterPosition();
-
-//                onItemSwipe(direction);
-
-//                AnimateSwipe.animateLeftSwipe(viewHolder.itemView);
-
+                onItemSwipe(direction);
 
             }
 
@@ -202,23 +211,10 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                     if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
                         final View itemView = viewHolder.itemView;
 
-                        Toast.makeText(getApplicationContext(),String.valueOf(itemView.getId()),Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(),String.valueOf(itemView.getId()),Toast.LENGTH_SHORT).show();
                         itemView.setTranslationX(dX/3);
 
-
-                        SpringAnimation animation = new SpringAnimation(itemView, DynamicAnimation.TRANSLATION_X,0);
-                        animation.getSpring().setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY)
-                                .setStiffness(SpringForce.STIFFNESS_HIGH);
-
-
-                        animation.start();
-                        animation.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
-                            @Override
-                            public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
-                                animation.cancel();
-                            }
-                        });
-
+//                        AnimateSwipe.animateLeftSwipe(viewHolder.itemView);
 
                     } else {
                         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
@@ -235,6 +231,16 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
 
     private void onItemSwipe(int direction) {
 
-        Snackbar.make(navigationView,String.valueOf(direction),Snackbar.LENGTH_LONG).show();
+
+        if (direction == ItemTouchHelper.LEFT) {
+            Snackbar.make(navigationView,"Left",Snackbar.LENGTH_SHORT).show();
+
+        }
+
+        else if (direction == ItemTouchHelper.RIGHT) {
+            Snackbar.make(navigationView,"Right",Snackbar.LENGTH_SHORT).show();
+
+        }
+
     }
 }
