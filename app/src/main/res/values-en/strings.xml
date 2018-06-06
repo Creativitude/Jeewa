@@ -67,6 +67,7 @@
     <string name="accept_terms_conditions">I accept Terms and Conditions of the Service</string>
     <string name="responses">Responses</string>
     <string name="date_posted">Date Posted</string>
+    <string name="db_btn_see_nearbyUsers">Nearby Donors</string>
 
 
     <string-array name="langs">

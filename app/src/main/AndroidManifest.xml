@@ -25,35 +25,33 @@
         <activity
             android:name=".Login"
             android:configChanges="locale|orientation"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Register"
             android:label="@string/label_register"
-            android:theme="@style/AppTheme">
-
-
-
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.CreatePost"
             android:label="Create Post"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme" />
         <!-- <activity android:name=".activity.Drawer" /> -->
         <activity
             android:name=".activity.RequestPost"
             android:label="Request"
             android:theme="@style/AppTheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.NearbyUsers" />
+        <activity android:name=".activity.MyActivities" />
+        <activity android:name=".activity.Responses" />
+        <activity
+            android:name=".activity.Settings"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".activity.Notifications"></activity>
     </application>
 
 </manifest>

@@ -67,6 +67,7 @@
     <string name="accept_terms_conditions">මම සේවයට අදාළ කොන්දේසි පිළිගනිමි</string>
     <string name="responses">ප්‍රතිචාර</string>
     <string name="date_posted">පළ කළ දිනය</string>
+    <string name="db_btn_see_nearbyUsers">අසල්වැසි දායකයන්</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>
