@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.helpers.Connectivity;
+import com.creativitude.jeewa.helpers.Transitions;
 import com.creativitude.jeewa.models.Post;
 import com.creativitude.jeewa.viewholders.AllRequestsHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -40,12 +42,15 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         final LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
         @SuppressLint("InflateParams") View contentView = inflater.inflate(R.layout.activity_all_requests, null, false);
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.requests);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Transitions.init(AllRequests.this);
+        }
 
         connectivity = new Connectivity(this);
         loader = new Alert(AllRequests.this);
@@ -242,5 +247,19 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
 
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+
+            finishAfterTransition();
+
+        } else {
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+
+        }
     }
 }

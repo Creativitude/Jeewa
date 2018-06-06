@@ -24,6 +24,7 @@ import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.helpers.Connectivity;
 import com.creativitude.jeewa.helpers.Dialer;
+import com.creativitude.jeewa.helpers.Transitions;
 import com.creativitude.jeewa.models.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -69,12 +70,15 @@ public class RequestPost extends Drawer implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         final LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
         @SuppressLint("InflateParams") View contentView = inflater.inflate(R.layout.activity_request_post, null, false);
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.requests);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Transitions.init(RequestPost.this);
+        }
 
         alert = new Alert(this);
         alert.showAlert();
@@ -440,5 +444,19 @@ public class RequestPost extends Drawer implements View.OnClickListener {
         accept.setText(R.string.accepted);
         request_state.setText(R.string.not_accepted);
         state = getString(R.string.not_accepted);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+
+            finishAfterTransition();
+
+        } else {
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+
+        }
     }
 }

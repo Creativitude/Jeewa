@@ -50,7 +50,6 @@ public class CreatePost extends Drawer implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         final LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
         @SuppressLint("InflateParams") View contentView = inflater.inflate(R.layout.activity_create_post, null, false);
@@ -251,6 +250,12 @@ public class CreatePost extends Drawer implements View.OnClickListener {
 
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+//        overridePendingTransition(R.anim.left_in, R.anim.right_out);
     }
 
 }
