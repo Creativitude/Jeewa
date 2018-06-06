@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.creativitude.jeewa.Login;
 import com.creativitude.jeewa.R;
@@ -58,11 +59,17 @@ public class Drawer extends AppCompatActivity {
                         break;
 
                     case R.id.my_requests:
+
+                        startActivity(MyActivities.class);
+//                        Toast.makeText(getApplicationContext(), "my requests", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
 //                        startActivity(CreateGroupActivity.class);
                         break;
 
                     case R.id.notifications:
+
+                        startActivity(Notifications.class);
+//                        Toast.makeText(getApplicationContext(), "notifications", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
 //                        startActivity(InitActivity.class);
                         break;
@@ -77,6 +84,9 @@ public class Drawer extends AppCompatActivity {
                         break;
 
                     case R.id.settings:
+
+                        startActivity(Settings.class);
+//                        Toast.makeText(getApplicationContext(), "settings", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
 //                        startActivity(ProfileActivity.class);
                         break;
@@ -147,7 +157,7 @@ public class Drawer extends AppCompatActivity {
             public void run() {
                 startActivity(new Intent(getApplicationContext(), toClass));
             }
-        }, 20);
+        }, 200);
 
     }
 

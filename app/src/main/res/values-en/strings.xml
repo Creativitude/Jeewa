@@ -88,6 +88,7 @@
     <string name="not_accepted">Not Accepted</string>
     <string name="reject_request">You have rejected the request !</string>
     <string name="rejected">Rejected</string>
+    <string name="db_btn_see_nearbyUsers">Nearby Donors</string>
 
 
     <string-array name="langs">
