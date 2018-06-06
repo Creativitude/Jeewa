@@ -6,10 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.Uri;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -22,7 +23,12 @@ import android.widget.Toast;
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.helpers.Connectivity;
+import com.creativitude.jeewa.helpers.Dialer;
 import com.creativitude.jeewa.models.Post;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,6 +58,9 @@ public class RequestPost extends Drawer implements View.OnClickListener {
     private Button accept;
 
     private CardView priority_color;
+    private DatabaseReference root;
+    private FirebaseAuth auth;
+    private String state;
 
 
     @Override
@@ -98,6 +107,11 @@ public class RequestPost extends Drawer implements View.OnClickListener {
         accept = findViewById(R.id.rp_btn_accept);
         call_now = findViewById(R.id.rp_btn_call_now);
 
+        root = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+
+
+
     }
 
     private void fetchData() {
@@ -108,8 +122,6 @@ public class RequestPost extends Drawer implements View.OnClickListener {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 postData = dataSnapshot.getValue(Post.class);
-
-                Log.d("Firebase", String.valueOf(postData));
                 setFields();
             }
 
@@ -157,10 +169,43 @@ public class RequestPost extends Drawer implements View.OnClickListener {
         }
 
         relationship.setText(postData.getRelationship());
-        request_state.setText("Pending"); // should be changed according to the user selection
+
+        checkStatus(); //check whether accepted or not
+        request_state.setText(R.string.not_accepted);
 
         alert.hideAlert();
 
+    }
+
+    private void checkStatus() {
+
+        state = "";
+
+        FirebaseUser user = auth.getCurrentUser();
+        DatabaseReference userResponses = root.child("Users").child(user.getUid()).child("MyResponses");
+
+        userResponses.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    for (DataSnapshot id: dataSnapshot.getChildren()) {
+                        if (id.getValue().equals(postId)) {
+                            state = getString(R.string.accepted);
+                        }
+                        else {
+                            state = getString(R.string.not_accepted);
+
+                        }
+                    }
+                }
+            }
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     @Override
@@ -182,15 +227,26 @@ public class RequestPost extends Drawer implements View.OnClickListener {
                 }
                 break;
             }
+
+            case R.id.rp_btn_accept: {
+
+                if(accept.getText().equals("Accept")) {
+                    acceptRequest();
+
+                } else {
+                    rejectRequest();
+                }
+
+            }
         }
 
     }
 
     private void callNow() {
 
-            Intent callIntent = new Intent(Intent.ACTION_DIAL);
-            callIntent.setData(Uri.parse("tel:" + postData.getContactNumber()));
-            startActivity(callIntent);
+        Dialer dialer = new Dialer(this);
+        dialer.dial(postData.getContactNumber());
+
     }
 
 
@@ -233,5 +289,122 @@ public class RequestPost extends Drawer implements View.OnClickListener {
             // other 'case' lines to check for other
             // permissions this app might request
         }
+    }
+
+
+    private void acceptRequest() {
+
+        final Alert alert = new Alert(this);
+        alert.showAlert();
+
+        FirebaseUser user = auth.getCurrentUser();
+        String userId = user.getUid();
+
+        //add the post to users node under my responses
+        DatabaseReference myResponses = root.child("Users").child(userId).child("MyResponses");
+        myResponses.push().setValue(postId);
+
+        //add a response to posts node under responses node of the particular post
+        DatabaseReference postRef = root.child("Posts").child(postId).child("Responses");
+        postRef.push().setValue(userId).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()) {
+                    request_state.setText(R.string.accepted);
+                    changeDrawable(true,alert);
+
+                } else {
+                    Snackbar.make(navigationView, R.string.accept_request_unsuccess,Snackbar.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+    }
+
+
+    private void rejectRequest () {
+
+        final Alert alert = new Alert(this);
+        alert.showAlert();
+
+        FirebaseUser user = auth.getCurrentUser();
+        final String userId = user.getUid();
+
+        //remove the post from users node under my responses
+        final DatabaseReference myResponses = root.child("Users").child(userId).child("MyResponses");
+
+        myResponses.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    for (DataSnapshot post: dataSnapshot.getChildren()) {
+                        if (post.getValue().equals(postId)) {
+                            myResponses.child(post.getKey()).removeValue();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //remove the response from posts node under responses node of the particular post
+        final DatabaseReference postRef = root.child("Posts").child(postId).child("Responses");
+
+        postRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    for (DataSnapshot post: dataSnapshot.getChildren()) {
+                        if (post.getValue().equals(userId)) {
+                            postRef.child(post.getKey()).removeValue(new DatabaseReference.CompletionListener() {
+                                @Override
+                                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                    request_state.setText(R.string.rejected);
+                                    changeDrawable(false,alert);
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
+
+    private void changeDrawable(boolean state, Alert alert) {
+
+        // state = true for accept, false for reject
+        Drawable img;
+
+        alert.hideAlert();
+
+        if (state) {
+//            img = this.getResources().getDrawable( R.drawable.request_reject);
+            accept.setText(R.string.btn_reject);
+            Snackbar.make(navigationView, R.string.accept_request,Snackbar.LENGTH_LONG).show();
+
+        } else {
+//            img = this.getResources().getDrawable( R.drawable.request_accept);
+            accept.setText(R.string.accept);
+            Snackbar.make(navigationView, R.string.reject_request,Snackbar.LENGTH_LONG).show();
+
+        }
+//        img.setBounds( 25, 25, 0, 0 );
+//        accept.setCompoundDrawables( img, null, null, null );
+
+
     }
 }

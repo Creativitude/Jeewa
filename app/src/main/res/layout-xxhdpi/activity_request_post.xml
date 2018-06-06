@@ -9,10 +9,11 @@
     android:orientation="vertical"
     tools:context=".activity.RequestPost">
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="10">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,6 +39,7 @@
                         android:background="@color/colorPrimaryDark"
                         android:gravity="center"
                         android:id="@+id/rp_tv_blood_group"
+                        android:text="AB+"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 
@@ -51,6 +53,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
+                            android:text="Blood Needed"
                             android:id="@+id/rp_tv_request_state"
                             android:textAlignment="center"
                             android:textSize="20sp" />
@@ -59,8 +62,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingBottom="5dp"
-                            android:id="@+id/rp_tv_priority"
+                            android:text="Within 2 days"
                             android:textAlignment="center"
+                            android:id="@+id/rp_tv_priority"
+                            android:textColor="@color/black"
                             android:textSize="18sp" />
 
                     </LinearLayout>
@@ -86,15 +91,14 @@
                         android:layout_weight="0.6"
                         android:paddingLeft="15dp"
                         android:text="@string/register_name"
-                        android:textSize="18sp"
-                        android:paddingStart="15dp"
-                        />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:id="@+id/rp_tv_name"
+                        android:text="Name"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -110,7 +114,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
                         android:paddingLeft="15dp"
-                        android:paddingStart="15dp"
                         android:text="@string/register_age"
                         android:textSize="18sp" />
 
@@ -119,6 +122,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:id="@+id/rp_tv_age"
+                        android:text="Name"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -134,7 +138,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
                         android:paddingLeft="15dp"
-                        android:paddingStart="15dp"
                         android:text="@string/register_gender"
                         android:textSize="18sp" />
 
@@ -143,6 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:id="@+id/rp_tv_gender"
+                        android:text="Name"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -158,7 +162,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
                         android:paddingLeft="15dp"
-                        android:paddingStart="15dp"
                         android:text="@string/register_district"
                         android:textSize="18sp" />
 
@@ -167,6 +170,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:id="@+id/rp_tv_district"
+                        android:text="Name"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -183,14 +187,14 @@
                         android:layout_weight="0.6"
                         android:paddingLeft="15dp"
                         android:text="@string/tv_rp_message"
-                        android:textSize="18sp"
-                        android:paddingStart="15dp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:id="@+id/rp_tv_message"
+                        android:text="qwertyuiopasdfghjklzxcvbnm qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm qwertyuiopasdfghjklzxcvbnm qwertyuiopasdfghjklzxcvbnm"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -212,8 +216,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="15dp"
-                android:text="@string/posted_by"
+                android:text="Posted By"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -221,8 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:layout_marginLeft="15dp"
-                android:orientation="horizontal"
-                android:layout_marginStart="15dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
@@ -230,14 +234,14 @@
                     android:layout_weight="0.6"
                     android:paddingLeft="15dp"
                     android:text="@string/register_name"
-                    android:textSize="18sp"
-                    android:paddingStart="15dp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/rp_tv_contact_name"
+                    android:text="Name"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -247,22 +251,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:layout_marginLeft="15dp"
-                android:orientation="horizontal"
-                android:layout_marginStart="15dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.6"
                     android:paddingLeft="15dp"
-                    android:text="@string/new_post_relationship"
-                    android:textSize="18sp"
-                    android:paddingStart="15dp" />
+                    android:text="Relationship"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="Name"
                     android:id="@+id/rp_tv_relationship"
                     android:textSize="18sp" />
 
@@ -273,8 +276,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:layout_marginLeft="15dp"
-                android:orientation="horizontal"
-                android:layout_marginStart="15dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
@@ -282,13 +284,13 @@
                     android:layout_weight="0.6"
                     android:paddingLeft="15dp"
                     android:text="@string/tv_rp_date"
-                    android:textSize="18sp"
-                    android:paddingStart="15dp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="date"
                     android:id="@+id/rp_tv_date"
                     android:textSize="18sp" />
 
@@ -305,7 +307,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="1.3"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -318,12 +320,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                tools:ignore="UselessParent">
+                android:orientation="horizontal">
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:id="@+id/rp_btn_call_now"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -332,24 +332,21 @@
                     android:drawableTint="@color/colorPrimary"
                     android:text="@string/call_now"
                     android:textColor="@color/colorPrimary"
+                    android:id="@+id/rp_btn_call_now"
                     android:textSize="18sp"
-                    android:drawableStart="@drawable/call_icon"
-                    tools:ignore="UnusedAttribute" />
+                    tools:targetApi="m" />
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:id="@+id/rp_btn_accept"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/accept_icon"
-                    android:drawableTint="@color/colorPrimary"
+                    android:drawableLeft="@drawable/request_accept"
                     android:text="@string/accept"
+                    android:id="@+id/rp_btn_accept"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    tools:targetApi="m"
-                    android:drawableStart="@drawable/accept_icon" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </RelativeLayout>

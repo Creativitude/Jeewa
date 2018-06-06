@@ -71,6 +71,13 @@
     <string name="blood_urgent">Blood needed within 2 days !</string>
     <string name="blood_somewhat_urgent">Blood needed within 7 days !</string>
     <string name="blood_not_urgent">Blood needed within 1 month !</string>
+    <string name="accept_request">You have successfully accepted the donation request !</string>
+    <string name="accept_request_unsuccess">There was a problem trying to accept this request. Please try again !</string>
+    <string name="accepted">Accepted</string>
+    <string name="btn_reject">Reject</string>
+    <string name="not_accepted">Not Accepted</string>
+    <string name="reject_request">You have rejected the request !</string>
+    <string name="rejected">Rejected</string>
 
     <string-array name="langs">
         <item>Choose Language</item>

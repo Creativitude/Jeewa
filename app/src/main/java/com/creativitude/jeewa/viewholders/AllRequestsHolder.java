@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.creativitude.jeewa.R;
+import com.creativitude.jeewa.helpers.Dialer;
 
 /**
  * Created by naveen on 29/05/2018.
@@ -31,6 +32,14 @@ public class AllRequestsHolder extends RecyclerView.ViewHolder{
         contactPerson = itemView.findViewById(R.id.tv_rc_relationsName);
         callNow = itemView.findViewById(R.id.btn_rc_call);
         priority = itemView.findViewById(R.id.card_rc_priority);
+
+        callNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialer dialer = new Dialer(view.getContext());
+                dialer.dial(view.getTag().toString());
+            }
+        });
     }
 
     public void setBloodType(String bloodType) {
