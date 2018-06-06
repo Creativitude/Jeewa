@@ -61,6 +61,9 @@ public class RequestPost extends Drawer implements View.OnClickListener {
     private DatabaseReference root;
     private FirebaseAuth auth;
     private String state;
+    private boolean state_listener;
+    private boolean rejectClicked;
+
 
 
     @Override
@@ -109,9 +112,6 @@ public class RequestPost extends Drawer implements View.OnClickListener {
 
         root = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
-
-
-
     }
 
     private void fetchData() {
@@ -190,13 +190,19 @@ public class RequestPost extends Drawer implements View.OnClickListener {
                 if(dataSnapshot.exists()) {
                     for (DataSnapshot id: dataSnapshot.getChildren()) {
                         if (id.getValue().equals(postId)) {
-                            state = getString(R.string.accepted);
+                            Log.d("button","inside check status : accepted");
+                            setRejectButton();
+                            state_listener = true;
                         }
                         else {
-                            state = getString(R.string.not_accepted);
+                            Log.d("button","inside check status : not accepted");
+                            setAcceptButton();
+                            state_listener = false;
 
                         }
                     }
+                } else {
+                    state_listener = false;
                 }
             }
 
@@ -229,11 +235,19 @@ public class RequestPost extends Drawer implements View.OnClickListener {
             }
 
             case R.id.rp_btn_accept: {
+                //state_listener = true means the person has accepted the request.
+                // in the moment of button click the state listener should be false if the user is trying to accept
 
-                if(accept.getText().equals("Accept")) {
+                if(!state_listener) {
+                    Log.d("button","inside button onClick : accepted");
+                    rejectClicked = false;
+                    state_listener = true;
                     acceptRequest();
 
                 } else {
+                    Log.d("button","inside button onClick : not accepted");
+                    rejectClicked = true;
+                    state_listener = false;
                     rejectRequest();
                 }
 
@@ -294,6 +308,9 @@ public class RequestPost extends Drawer implements View.OnClickListener {
 
     private void acceptRequest() {
 
+        Log.d("button","inside acceptRequest");
+
+
         final Alert alert = new Alert(this);
         alert.showAlert();
 
@@ -311,7 +328,6 @@ public class RequestPost extends Drawer implements View.OnClickListener {
             public void onComplete(@NonNull Task<Void> task) {
 
                 if (task.isSuccessful()) {
-                    request_state.setText(R.string.accepted);
                     changeDrawable(true,alert);
 
                 } else {
@@ -326,6 +342,8 @@ public class RequestPost extends Drawer implements View.OnClickListener {
 
     private void rejectRequest () {
 
+        Log.d("button","inside reject Request");
+
         final Alert alert = new Alert(this);
         alert.showAlert();
 
@@ -338,7 +356,7 @@ public class RequestPost extends Drawer implements View.OnClickListener {
         myResponses.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
+                if(dataSnapshot.exists() && rejectClicked) {
                     for (DataSnapshot post: dataSnapshot.getChildren()) {
                         if (post.getValue().equals(postId)) {
                             myResponses.child(post.getKey()).removeValue();
@@ -359,13 +377,12 @@ public class RequestPost extends Drawer implements View.OnClickListener {
         postRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
+                if(dataSnapshot.exists() && rejectClicked) {
                     for (DataSnapshot post: dataSnapshot.getChildren()) {
                         if (post.getValue().equals(userId)) {
                             postRef.child(post.getKey()).removeValue(new DatabaseReference.CompletionListener() {
                                 @Override
                                 public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                                    request_state.setText(R.string.rejected);
                                     changeDrawable(false,alert);
                                 }
                             });
@@ -392,13 +409,18 @@ public class RequestPost extends Drawer implements View.OnClickListener {
         alert.hideAlert();
 
         if (state) {
+
+            Log.d("button","inside change Drawable : accepted");
+
 //            img = this.getResources().getDrawable( R.drawable.request_reject);
-            accept.setText(R.string.btn_reject);
+            setRejectButton();
             Snackbar.make(navigationView, R.string.accept_request,Snackbar.LENGTH_LONG).show();
 
         } else {
 //            img = this.getResources().getDrawable( R.drawable.request_accept);
-            accept.setText(R.string.accept);
+            Log.d("button","inside change Drawable : not accepted");
+
+            setAcceptButton();
             Snackbar.make(navigationView, R.string.reject_request,Snackbar.LENGTH_LONG).show();
 
         }
@@ -406,5 +428,17 @@ public class RequestPost extends Drawer implements View.OnClickListener {
 //        accept.setCompoundDrawables( img, null, null, null );
 
 
+    }
+
+    private void setRejectButton() {
+        accept.setText(R.string.btn_reject);
+        request_state.setText(R.string.accepted);
+        state = getString(R.string.accepted);
+    }
+
+    private void setAcceptButton() {
+        accept.setText(R.string.accepted);
+        request_state.setText(R.string.not_accepted);
+        state = getString(R.string.not_accepted);
     }
 }
