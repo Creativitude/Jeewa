@@ -135,7 +135,7 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        CommonOnClicks.fullCardOnClick(view,post_id,AllRequests.this,getApplicationContext());
+                        CommonOnClicks.fullCardOnClick(view,post_id,AllRequests.this,getApplicationContext(),RequestPost.class);
                     }
                 });
 

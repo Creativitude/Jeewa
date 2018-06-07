@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.creativitude.jeewa.R;
+import com.creativitude.jeewa.activity.Responses;
 import com.creativitude.jeewa.helpers.Alert;
+import com.creativitude.jeewa.helpers.CommonOnClicks;
 import com.creativitude.jeewa.models.Post;
 import com.creativitude.jeewa.viewholders.MyRequestsHolder;
 import com.firebase.ui.database.FirebaseIndexRecyclerAdapter;
@@ -119,12 +121,23 @@ public class MyRequests extends Fragment {
 
                 Log.d("MyRequests","inside view holder");
 
+                final String post_id = getRef(position).getKey();
+
+
                 long rp = (model.getNumber_of_responses() != null) ? model.getNumber_of_responses() : 0;
 
                 viewHolder.setBloodType(model.getBloodGroup());
                 viewHolder.setDate(model.getDate());
                 viewHolder.setNumberOfResponses(String.valueOf(rp));
                 viewHolder.setPriority(model.getPriority());
+
+
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        CommonOnClicks.fullCardOnClick(view,post_id,getActivity(),getContext(),Responses.class);
+                    }
+                });
 
             }
 

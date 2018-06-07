@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.creativitude.jeewa.R;
+import com.creativitude.jeewa.activity.RequestPost;
 import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.helpers.CommonOnClicks;
 import com.creativitude.jeewa.models.Post;
@@ -130,7 +131,7 @@ public class MyResponses extends Fragment {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        CommonOnClicks.fullCardOnClick(view,post_id,getActivity(),getContext());
+                        CommonOnClicks.fullCardOnClick(view,post_id,getActivity(),getContext(), RequestPost.class);
                     }
                 });
 
