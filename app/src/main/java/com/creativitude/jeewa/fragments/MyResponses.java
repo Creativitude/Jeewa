@@ -159,7 +159,7 @@ public class MyResponses extends Fragment {
 
     }
 
-    public static void fullCardOnClick(View view, String key, Activity activity, Context context, Class toClass) {
+    public void fullCardOnClick(View view, String key, Activity activity, Context context, Class toClass) {
 
         Intent intent = new Intent(activity, toClass);
         intent.putExtra("POST_ID",key);
