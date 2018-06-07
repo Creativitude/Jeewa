@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.helpers.Alert;
+import com.creativitude.jeewa.helpers.CommonOnClicks;
 import com.creativitude.jeewa.helpers.Connectivity;
 import com.creativitude.jeewa.helpers.Transitions;
 import com.creativitude.jeewa.models.Post;
@@ -134,7 +135,7 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        fullCardOnClick(view,post_id);
+                        CommonOnClicks.fullCardOnClick(view,post_id,AllRequests.this,getApplicationContext());
                     }
                 });
 
@@ -155,18 +156,6 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
 
     }
 
-    private void fullCardOnClick(View view,String key) {
-
-        Intent intent = new Intent(AllRequests.this, RequestPost.class);
-        intent.putExtra("POST_ID",key);
-//        Bundle options = ActivityOptionsCompat.makeScaleUpAnimation(
-//                view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
-//
-//        ActivityCompat.startActivity(AllRequests.this, intent, options);
-
-        startActivity(intent);
-
-    }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
