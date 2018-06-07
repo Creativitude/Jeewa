@@ -27,7 +27,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Preferences"
+            android:text="@string/preferences"
             android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>
@@ -48,23 +48,15 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text="Language"
+                android:text="@string/language"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sinhala"
+                android:text="@string/choose_the_display_language"
                 android:textSize="13sp" />
         </LinearLayout>
-
-
-        <Switch
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="0.2"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
 
 
     </LinearLayout>
@@ -94,7 +86,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Notifications"
+            android:text="@string/notifications"
             android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>
@@ -114,13 +106,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text="Push Notifications"
+                android:text="@string/push_notifications"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Send me notifications related to my blood group only"
+                android:text="@string/notify_my_blood_group_only"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -159,7 +151,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="Profile"
+            android:text="@string/profile"
             android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>
@@ -179,13 +171,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text="Edit Profile"
+                android:text="@string/edit_profile"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Make changes to initially created profile"
+                android:text="@string/make_changes_to_initially_created_profile"
                 android:textSize="13sp" />
         </LinearLayout>
 
