@@ -1,8 +1,5 @@
 package com.creativitude.jeewa.fragments;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,6 +17,7 @@ import android.widget.TextView;
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.activity.RequestPost;
 import com.creativitude.jeewa.helpers.Alert;
+import com.creativitude.jeewa.helpers.CommonOnClicks;
 import com.creativitude.jeewa.models.Post;
 import com.creativitude.jeewa.viewholders.AllRequestsHolder;
 import com.firebase.ui.database.FirebaseIndexRecyclerAdapter;
@@ -133,7 +131,7 @@ public class MyResponses extends Fragment {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        fullCardOnClick(view,post_id,getActivity(),getContext(), RequestPost.class);
+                        CommonOnClicks.fullCardOnClick(view,post_id,getActivity(),getContext(), RequestPost.class);
                     }
                 });
 
@@ -156,19 +154,6 @@ public class MyResponses extends Fragment {
         rvMyResponse.setAdapter(adapter);
 
 
-
-    }
-
-    public void fullCardOnClick(View view, String key, Activity activity, Context context, Class toClass) {
-
-        Intent intent = new Intent(activity, toClass);
-        intent.putExtra("POST_ID",key);
-//        Bundle options = ActivityOptionsCompat.makeScaleUpAnimation(
-//                view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
-//
-//        ActivityCompat.startActivity(AllRequests.this, intent, options);
-
-        context.startActivity(intent);
 
     }
 }

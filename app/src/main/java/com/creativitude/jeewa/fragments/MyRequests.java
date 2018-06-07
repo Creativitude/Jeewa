@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.activity.Responses;
 import com.creativitude.jeewa.helpers.Alert;
+import com.creativitude.jeewa.helpers.CommonOnClicks;
 import com.creativitude.jeewa.models.Post;
 import com.creativitude.jeewa.viewholders.MyRequestsHolder;
 import com.firebase.ui.database.FirebaseIndexRecyclerAdapter;
@@ -137,7 +138,7 @@ public class MyRequests extends Fragment {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        fullCardOnClick(view,post_id,getActivity(),getContext(),Responses.class);
+                        CommonOnClicks.fullCardOnClick(view,post_id,getActivity(),getContext(),Responses.class);
                     }
                 });
 
@@ -163,7 +164,7 @@ public class MyRequests extends Fragment {
 
     }
 
-    public void fullCardOnClick(View view, String key, Activity activity, Context context, Class toClass) {
+    public static void fullCardOnClick(View view, String key, Activity activity, Context context, Class toClass) {
 
         Intent intent = new Intent(activity, toClass);
         intent.putExtra("POST_ID",key);

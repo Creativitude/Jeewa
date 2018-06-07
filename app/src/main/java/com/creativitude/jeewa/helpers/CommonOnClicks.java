@@ -15,11 +15,12 @@ public class CommonOnClicks {
 
         Intent intent = new Intent(activity, toClass);
         intent.putExtra("POST_ID",key);
+
 //        Bundle options = ActivityOptionsCompat.makeScaleUpAnimation(
 //                view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
 //
 //        ActivityCompat.startActivity(AllRequests.this, intent, options);
-
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         context.startActivity(intent);
 
     }
