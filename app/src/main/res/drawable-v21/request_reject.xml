@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:width="50dp"
+        android:height="50dp"
+        android:drawable="@drawable/request_reject_red"
+        tools:ignore="UnusedAttribute" />
+
+</layer-list>

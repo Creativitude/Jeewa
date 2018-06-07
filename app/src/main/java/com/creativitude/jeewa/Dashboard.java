@@ -15,7 +15,6 @@ public class Dashboard extends Drawer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         final LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
         @SuppressLint("InflateParams") View contentView = inflater.inflate(R.layout.dashboard, null, false);
@@ -29,6 +28,12 @@ public class Dashboard extends Drawer {
     protected void onResume() {
         navigationView.setCheckedItem(R.id.home);
         super.onResume();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.left_in, R.anim.right_out);
     }
 
 

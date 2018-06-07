@@ -1,10 +1,13 @@
 package com.creativitude.jeewa.activity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,8 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.creativitude.jeewa.Dashboard;
 import com.creativitude.jeewa.Login;
 import com.creativitude.jeewa.R;
 
@@ -31,8 +34,6 @@ public class Drawer extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initNavigationDrawer();
-
-
     }
 
 
@@ -50,66 +51,48 @@ public class Drawer extends AppCompatActivity {
 
                 switch (item_id) {
                     case R.id.home:
-                        Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
-//                        startActivity(new Intent(getApplicationContext(),MainMenuActivity.class));
+                        startActivity(Dashboard.class);
                         break;
 
                     case R.id.requests:
-                        Toast.makeText(getApplicationContext(), "Requests", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
-//                        startActivity(new Intent(getApplicationContext(),MainMenuActivity.class));
+                        startActivity(AllRequests.class);
                         break;
 
                     case R.id.my_requests:
-
-                        startActivity(new Intent(getApplicationContext(), MyActivities.class));
-//                        Toast.makeText(getApplicationContext(), "my requests", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
-//                        startActivity(CreateGroupActivity.class);
+                        startActivity(MyActivities.class);
                         break;
 
                     case R.id.notifications:
-
-                        startActivity(new Intent(getApplicationContext(), Notifications.class));
-//                        Toast.makeText(getApplicationContext(), "notifications", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
-//                        startActivity(InitActivity.class);
+                        startActivity(Notifications.class);
                         break;
 
                     case R.id.important_info:
-                        Toast.makeText(getApplicationContext(), "important info", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
-                        //drawerLayout.closeDrawers();
                         break;
 
                     case R.id.profile:
-                        Toast.makeText(getApplicationContext(), "profile", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
-                        //startActivity(ImageTranslateActivity.class);
                         break;
 
                     case R.id.settings:
-
-                        startActivity(new Intent(getApplicationContext(), Settings.class));
-//                        Toast.makeText(getApplicationContext(), "settings", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
-//                        startActivity(ProfileActivity.class);
+                        startActivity(Settings.class);
                         break;
 
 
                     case R.id.logout:
-                        Toast.makeText(getApplicationContext(), "logout", Toast.LENGTH_SHORT).show();
 //                        logout();
                         break;
 
                     case R.id.about_developer:
-                        Toast.makeText(getApplicationContext(), "about us", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
                         break;
 
                     case R.id.terms:
-                        Toast.makeText(getApplicationContext(), "terms and conditions", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawers();
                         break;
 
@@ -121,7 +104,7 @@ public class Drawer extends AppCompatActivity {
         });
 
 
-        View header = navigationView.getHeaderView(0);
+//        View header = navigationView.getHeaderView(0);
         drawerLayout = findViewById(R.id.drawer);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
@@ -161,12 +144,29 @@ public class Drawer extends AppCompatActivity {
 
     private void startActivity(final Class toClass) {
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(getApplicationContext(), toClass));
-            }
-        }, 200);
+        final Intent intent = new Intent(getApplicationContext(),toClass);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            final ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
+            new Handler().postDelayed(new Runnable() {
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                @Override
+                public void run() {
+                    startActivity(intent,options.toBundle());
+
+                }
+            },300);
+        } else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.right_in,R.anim.left_out);
+                }
+            },300);
+
+        }
+
+
 
     }
 

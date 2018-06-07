@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="60dp">
+    >
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="10dp"
-        app:cardElevation="11dp">
+        app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -27,15 +29,14 @@
                     android:id="@+id/card_rc_priority"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:backgroundTint="@color/colorPrimaryDark"
-                    app:cardElevation="7dp">
+                    app:cardElevation="6dp"
+                    tools:targetApi="lollipop">
 
                     <TextView
                         android:id="@+id/tv_rc_bloodGroup"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="20dp"
-                        android:text="AB+"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="40sp" />
@@ -49,6 +50,7 @@
 
                     <TextView
                         android:layout_width="match_parent"
+                        android:id="@+id/tv_rc_request_state"
                         android:layout_height="50dp"
                         android:padding="2dp"
                         android:text="@string/blood_needed"
@@ -68,14 +70,16 @@
                 android:orientation="vertical"
                 android:paddingLeft="7dp"
                 android:paddingRight="5dp"
-                android:paddingTop="5dp">
+                android:paddingTop="5dp"
+                android:paddingStart="7dp"
+                android:paddingEnd="5dp">
 
                 <TextView
                     android:id="@+id/tv_rc_msg"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="AB+adskjsnsknsknjksdnnsdjvkvnsdvsknsnvksnjskjjkdkll.hkjsjdhajkajkskd" />
+                    tools:ignore="NestedWeights" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -95,8 +99,7 @@
                         android:id="@+id/tv_rc_area"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Kandy" />
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
@@ -117,24 +120,24 @@
                         android:id="@+id/tv_rc_relationsName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Nimal Edirisinghe" />
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/btn_rc_call"
-                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@color/icon_tint"
+                    style="@style/CallNowButtonTheme"
                     android:drawableLeft="@drawable/call_icon"
                     android:drawableTint="@color/colorPrimary"
                     android:paddingEnd="30dp"
                     android:paddingStart="30dp"
                     android:text="@string/call_now"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:targetApi="m"
+                    android:drawableStart="@drawable/call_icon" />
 
             </LinearLayout>
 
