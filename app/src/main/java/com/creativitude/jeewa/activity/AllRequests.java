@@ -1,6 +1,7 @@
 package com.creativitude.jeewa.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -21,7 +22,6 @@ import android.widget.TextView;
 
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.helpers.Alert;
-import com.creativitude.jeewa.helpers.CommonOnClicks;
 import com.creativitude.jeewa.helpers.Connectivity;
 import com.creativitude.jeewa.helpers.Transitions;
 import com.creativitude.jeewa.models.Post;
@@ -135,7 +135,7 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        CommonOnClicks.fullCardOnClick(view,post_id,AllRequests.this,getApplicationContext(),RequestPost.class);
+                        fullCardOnClick(view,post_id,AllRequests.this,getApplicationContext(),RequestPost.class);
                     }
                 });
 
@@ -153,6 +153,19 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
         };
 
         rvAllRequests.setAdapter(allRequestAdapter);
+
+    }
+
+    public static void fullCardOnClick(View view, String key, Activity activity, Context context, Class toClass) {
+
+        Intent intent = new Intent(activity, toClass);
+        intent.putExtra("POST_ID",key);
+//        Bundle options = ActivityOptionsCompat.makeScaleUpAnimation(
+//                view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
+//
+//        ActivityCompat.startActivity(AllRequests.this, intent, options);
+
+        context.startActivity(intent);
 
     }
 
