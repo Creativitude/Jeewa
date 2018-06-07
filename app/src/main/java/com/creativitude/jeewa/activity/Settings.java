@@ -1,10 +1,14 @@
 package com.creativitude.jeewa.activity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.creativitude.jeewa.R;
+import com.creativitude.jeewa.helpers.SelectLanguage;
 import com.creativitude.jeewa.helpers.Transitions;
 
 public class Settings extends AppCompatActivity {
@@ -18,6 +22,14 @@ public class Settings extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Transitions.init(Settings.this);
         }
+
+        LinearLayout language = findViewById(R.id.set_Language);
+        language.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Settings.this, SelectLanguage.class));
+            }
+        });
     }
 
 
@@ -34,4 +46,6 @@ public class Settings extends AppCompatActivity {
 
         }
     }
+
+
 }

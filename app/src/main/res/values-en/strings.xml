@@ -95,6 +95,7 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="make_changes_to_initially_created_profile">Make changes to initially created profile</string>
     <string name="push_notifications">Push Notifications</string>
+    <string name="english">English</string>
 
 
     <string-array name="langs">
