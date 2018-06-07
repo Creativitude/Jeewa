@@ -89,6 +89,7 @@
     <string name="reject_request">You have rejected the request !</string>
     <string name="rejected">Rejected</string>
     <string name="db_btn_see_nearbyUsers">අසල්වැසි දායකයන්</string>
+    <string name="my_responses">My Responses</string>
 
     <string-array name="langs">
         <item>භාෂාව තෝරන්න</item>

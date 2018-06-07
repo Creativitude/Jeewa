@@ -6,30 +6,31 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
-
-
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme2">
-
         <activity
             android:name=".Dashboard"
             android:configChanges="locale|orientation">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".Login"
             android:configChanges="locale|orientation"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Register"
             android:label="@string/label_register"
@@ -38,26 +39,29 @@
             android:name=".activity.CreatePost"
             android:label="Create Post"
             android:theme="@style/AppTheme2">
-            <!--use AppTheme2 for activities with drawer-->
-        </activity>
 
+            <!-- use AppTheme2 for activities with drawer -->
+        </activity>
         <activity
             android:name=".activity.RequestPost"
             android:label="Request"
-            android:theme="@style/AppTheme2">
-
-        </activity>
-        <activity android:name=".activity.AllRequests"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".activity.AllRequests"
             android:label="@string/requests">
 
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-       </activity>
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
         <activity android:name=".activity.NearbyUsers" />
-        <activity android:name=".activity.MyActivities" />
+        <activity
+            android:name=".activity.MyActivities"
+            android:label="@string/title_activity_my_activities"
+            android:theme="@style/AppTheme2" />
         <activity android:name=".activity.Responses" />
         <activity
             android:name=".activity.Settings"

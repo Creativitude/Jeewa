@@ -64,6 +64,8 @@ public class RequestPost extends Drawer implements View.OnClickListener {
     private String state;
     private boolean state_listener;
     private boolean rejectClicked;
+    private boolean decrease;
+    private boolean increase;
 
 
 
@@ -323,16 +325,20 @@ public class RequestPost extends Drawer implements View.OnClickListener {
 
         //add the post to users node under my responses
         DatabaseReference myResponses = root.child("Users").child(userId).child("MyResponses");
-        myResponses.push().setValue(postId);
+        myResponses.child(postId).setValue(postId);
 
         //add a response to posts node under responses node of the particular post
         DatabaseReference postRef = root.child("Posts").child(postId).child("Responses");
-        postRef.push().setValue(userId).addOnCompleteListener(new OnCompleteListener<Void>() {
+        postRef.child(userId).setValue(userId).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
                 if (task.isSuccessful()) {
                     changeDrawable(true,alert);
+
+                    decrease = false;
+                    increase = true;
+                    changeResponseNumber();
 
                 } else {
                     Snackbar.make(navigationView, R.string.accept_request_unsuccess,Snackbar.LENGTH_LONG).show();
@@ -387,7 +393,10 @@ public class RequestPost extends Drawer implements View.OnClickListener {
                             postRef.child(post.getKey()).removeValue(new DatabaseReference.CompletionListener() {
                                 @Override
                                 public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                    decrease = true;
+                                    increase = false;
                                     changeDrawable(false,alert);
+                                    changeResponseNumber();
                                 }
                             });
                         }
@@ -403,7 +412,39 @@ public class RequestPost extends Drawer implements View.OnClickListener {
 
     }
 
+    private void changeResponseNumber() {
 
+        final DatabaseReference numberOfResponses = root.child("Posts").child(postId).child("number_of_responses");
+
+        numberOfResponses.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+
+                    if (increase) {
+                        numberOfResponses.setValue(Integer.parseInt(dataSnapshot.getValue().toString()) + 1);
+                        increase = false;
+                    } else if (decrease){
+                        numberOfResponses.setValue(Integer.parseInt(dataSnapshot.getValue().toString())  - 1);
+                        decrease = false;
+                    }
+
+                } else {
+
+                    if (increase) {
+                        numberOfResponses.setValue(1);
+                        increase = false;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
     private void changeDrawable(boolean state, Alert alert) {
 

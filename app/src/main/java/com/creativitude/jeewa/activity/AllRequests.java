@@ -107,7 +107,8 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
         loader.showAlert();
 
 
-        FirebaseRecyclerAdapter<Post, AllRequestsHolder> allRequestAdapter = new FirebaseRecyclerAdapter<Post, AllRequestsHolder>(
+        FirebaseRecyclerAdapter<Post, AllRequestsHolder> allRequestAdapter = new FirebaseRecyclerAdapter<
+                Post, AllRequestsHolder>(
                 Post.class,
                 R.layout.request_card,
                 AllRequestsHolder.class,
@@ -136,9 +137,6 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                         fullCardOnClick(view,post_id);
                     }
                 });
-
-//                Random random = new Random();
-//                viewHolder.itemView.setId(random.nextInt(100000)+1);
 
             }
 
