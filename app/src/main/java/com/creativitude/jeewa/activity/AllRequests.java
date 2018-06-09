@@ -62,7 +62,8 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
         rvAllRequests = findViewById(R.id.rvAllRequests);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AllRequests.this);
         linearLayoutManager.setSmoothScrollbarEnabled(true);
-        linearLayoutManager.setStackFromEnd(false);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
 
         rvAllRequests.setLayoutManager(linearLayoutManager);
 

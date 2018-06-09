@@ -58,8 +58,8 @@ public class Notifications extends Drawer {
         rvNotification = findViewById(R.id.rv_notification);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setSmoothScrollbarEnabled(true);
-        linearLayoutManager.setStackFromEnd(false);
-
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         rvNotification.setLayoutManager(linearLayoutManager);
 
         DividerItemDecoration itemDecoration = new DividerItemDecoration(

@@ -57,6 +57,9 @@ public class Responses extends Drawer {
         rvResponders = findViewById(R.id.rv_responders);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setSmoothScrollbarEnabled(true);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+
         rvResponders.setLayoutManager(linearLayoutManager);
 
         DividerItemDecoration itemDecoration = new DividerItemDecoration(

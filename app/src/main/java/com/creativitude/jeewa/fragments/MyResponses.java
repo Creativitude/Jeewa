@@ -56,6 +56,9 @@ public class MyResponses extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setSmoothScrollbarEnabled(true);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+
         rvMyResponse.setLayoutManager(linearLayoutManager);
 
         DividerItemDecoration itemDecoration = new DividerItemDecoration(
