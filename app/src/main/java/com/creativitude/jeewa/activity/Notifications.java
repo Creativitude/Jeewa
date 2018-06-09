@@ -30,7 +30,6 @@ public class Notifications extends Drawer {
     private Alert loader;
     private boolean emptyViewCheck;
     private TextView emptyView;
-    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +77,7 @@ public class Notifications extends Drawer {
                 itemDecoration
         );
 
-        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         notificationRef = FirebaseDatabase.getInstance().getReference("Notifications").child(userId);
 
