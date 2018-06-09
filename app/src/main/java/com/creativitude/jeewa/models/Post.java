@@ -18,12 +18,13 @@ public class Post {
     private String priority;
     private String date;
     private Long number_of_responses;
+    private String postedBy;
 
 
     public Post() {
     }
 
-    public Post(String name, String area, String gender, String bloodGroup, String age, String contactPerson, String contactNumber, String relationship, String optionalMessage, String priority,String date, Long numberOfResponses) {
+    public Post(String name, String area, String gender, String bloodGroup, String age, String contactPerson, String contactNumber, String relationship, String optionalMessage, String priority, String date, Long number_of_responses, String postedBy) {
         this.name = name;
         this.area = area;
         this.gender = gender;
@@ -35,7 +36,8 @@ public class Post {
         this.optionalMessage = optionalMessage;
         this.priority = priority;
         this.date = date;
-        this.number_of_responses = numberOfResponses;
+        this.number_of_responses = number_of_responses;
+        this.postedBy = postedBy;
     }
 
     public String getName() {
@@ -132,5 +134,13 @@ public class Post {
 
     public void setNumber_of_responses(Long number_of_responses) {
         this.number_of_responses = number_of_responses;
+    }
+
+    public String getPostedBy() {
+        return postedBy;
+    }
+
+    public void setPostedBy(String postedBy) {
+        this.postedBy = postedBy;
     }
 }

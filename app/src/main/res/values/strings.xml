@@ -62,7 +62,7 @@
     <string name="tv_rp_message">Message</string>
     <string name="tv_rp_date">Date</string>
     <string name="i_am_a_donor">I am a Donor</string>
-    <string name="notify_my_blood_group_only">Send me notifications related to my Blood Group only</string>
+    <string name="notify_my_blood_group_only">Send me notifications related to all blood groups</string>
     <string name="accept_terms_conditions">I accept Terms and Conditions of the Service</string>
     <string name="responses">Responses</string>
     <string name="date_posted">Date Posted</string>
@@ -223,4 +223,22 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="my_responses">My Responses</string>
+
+
+    <string name="quickstart_message">Click the SUBSCRIBE TO NEWS button below to subscribe to the
+        news topic. Messages sent to the news topic will be received. The LOG TOKEN button logs the
+        InstanceID token to logcat.</string>
+    <string name="subscribe_to_news">Subscribe To News</string>
+    <string name="log_token">Log Token</string>
+
+    <string name="msg_subscribed">Subscribed to news topic</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default_notification_channel_name" translatable="true">News</string>
+    <string name="msg_subscribe_failed">Failed to subscribe to news topic</string>
 </resources>

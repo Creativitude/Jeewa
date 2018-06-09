@@ -13,12 +13,15 @@ public class User {
     private String bg;
     private String gender;
     private String email;
+    private boolean donor;
+    private boolean send_notifications;
+    private String token;
 
     public User(){
         // default constructor
     }
 
-    public User(String name, String age, String contact_no, String district, String bg, String gender, String email) {
+    public User(String name, String age, String contact_no, String district, String bg, String gender, String email, boolean donor, boolean send_notifications, String token) {
         this.name = name;
         this.age = age;
         this.contact_no = contact_no;
@@ -26,8 +29,10 @@ public class User {
         this.bg = bg;
         this.gender = gender;
         this.email = email;
+        this.donor = donor;
+        this.send_notifications = send_notifications;
+        this.token = token;
     }
-
 
     public String getName() {
         return name;
@@ -85,4 +90,27 @@ public class User {
         this.email = email;
     }
 
+    public boolean isDonor() {
+        return donor;
+    }
+
+    public void setDonor(boolean donor) {
+        this.donor = donor;
+    }
+
+    public boolean isSend_notifications() {
+        return send_notifications;
+    }
+
+    public void setSend_notifications(boolean send_notifications) {
+        this.send_notifications = send_notifications;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

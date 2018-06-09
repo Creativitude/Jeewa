@@ -12,7 +12,8 @@
         android:padding="15dp"
         android:scaleType="centerCrop"
         android:src="@drawable/trust_24"
-        android:tint="@color/colorAccent" />
+        android:tint="@color/colorAccent"
+        android:contentDescription="@string/content" />
 
     <TextView
         android:id="@+id/tv_notification"
@@ -20,7 +21,6 @@
         android:layout_height="match_parent"
         android:layout_weight="0.8"
         android:padding="10dp"
-        android:text="User A from Kandy has requested AB+ Blood."
         android:textSize="16sp" />
 
 </LinearLayout>

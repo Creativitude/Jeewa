@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +17,11 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.creativitude.jeewa.R;
+import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.helpers.Connectivity;
+import com.creativitude.jeewa.helpers.Constants;
 import com.creativitude.jeewa.helpers.CurrentDate;
+import com.creativitude.jeewa.https.PostMethod;
 import com.creativitude.jeewa.models.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +29,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class CreatePost extends Drawer implements View.OnClickListener {
 
@@ -126,9 +135,13 @@ public class CreatePost extends Drawer implements View.OnClickListener {
 
     private void storeInFirebaseDb() {
 
-        DatabaseReference postRef = rootRef.getReference("Posts").push();
+        final Alert alert = new Alert(this);
+        alert.showAlert();
+
+        final DatabaseReference postRef = rootRef.getReference("Posts").push();
 
         post.setDate(CurrentDate.getDate());
+        post.setPostedBy(mAuth.getCurrentUser().getUid());
 
         postRef.setValue(this.post).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -137,21 +150,59 @@ public class CreatePost extends Drawer implements View.OnClickListener {
                 clearFields();
 
                 if (task.isSuccessful()) {
+
+                    //add the post id (key) to user's 'posts' node
+                    FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                    DatabaseReference userRef = rootRef.getReference("Users");
+                    userRef.child(firebaseUser.getUid()).child("Posts").child(postRef.getKey()).setValue(postRef.getKey());
+
+                    sendNotification();
+
+                    alert.hideAlert();
                     Snackbar.make(navigationView,String.valueOf(getString(R.string.post_success)),Snackbar.LENGTH_SHORT).show();
                 } else {
+                    alert.hideAlert();
                     Snackbar.make(navigationView,String.valueOf(getString(R.string.post_unsuccess)),Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
 
-        //add the post id (key) to user's 'posts' node
-        FirebaseUser firebaseUser = mAuth.getCurrentUser();
-        DatabaseReference userRef = rootRef.getReference("Users");
-        userRef.child(firebaseUser.getUid()).child("Posts").child(postRef.getKey()).setValue(postRef.getKey());
-
         //start new response node
 //        DatabaseReference responseRef = rootRef.getReference("Responses");
 //        responseRef.push().setValue(postRef.getKey());
+
+
+    }
+
+    private void sendNotification() {
+
+        JSONObject bodyObject = new JSONObject();
+
+        try {
+            bodyObject.put("name",this.post.getName());
+            bodyObject.put("bloodGroup",this.post.getBloodGroup());
+            bodyObject.put("optionalMessage",this.post.getOptionalMessage());
+            bodyObject.put("area",this.post.getArea());
+            bodyObject.put("age",this.post.getAge());
+            bodyObject.put("contactNumber",this.post.getContactNumber());
+            bodyObject.put("contactPerson",this.post.getContactPerson());
+            bodyObject.put("date",this.post.getDate());
+            bodyObject.put("priority",this.post.getPriority());
+            bodyObject.put("relationship",this.post.getRelationship());
+
+            String bodyString = bodyObject.toString();
+
+            PostMethod notify = new PostMethod();
+            String result = notify.post(Constants.SEND_NOTIFICATION,bodyString);
+
+            Log.i("Notification_Report", "Notification results: " + result);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }

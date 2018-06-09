@@ -23,8 +23,10 @@ import android.widget.Toast;
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.helpers.Connectivity;
+import com.creativitude.jeewa.helpers.Constants;
 import com.creativitude.jeewa.helpers.Dialer;
 import com.creativitude.jeewa.helpers.Transitions;
+import com.creativitude.jeewa.https.PostMethod;
 import com.creativitude.jeewa.models.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +37,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class RequestPost extends Drawer implements View.OnClickListener {
 
@@ -340,6 +347,8 @@ public class RequestPost extends Drawer implements View.OnClickListener {
                     increase = true;
                     changeResponseNumber();
 
+                    sendNotification("accepted");
+
                 } else {
                     Snackbar.make(navigationView, R.string.accept_request_unsuccess,Snackbar.LENGTH_LONG).show();
                 }
@@ -347,6 +356,32 @@ public class RequestPost extends Drawer implements View.OnClickListener {
             }
         });
 
+    }
+
+    private void sendNotification(String status) {
+
+        JSONObject bodyObject = new JSONObject();
+
+
+
+        try {
+            bodyObject.put("postId",postId);
+            bodyObject.put("status",status);
+            bodyObject.put("acceptedById",auth.getCurrentUser().getUid());
+
+            String bodyString = bodyObject.toString();
+
+            PostMethod respond = new PostMethod();
+
+            String result = respond.post(Constants.RESPONSE_FOR_REQUEST,bodyString);
+
+            Log.i("Response_Report", "Response results: " + result);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -397,6 +432,8 @@ public class RequestPost extends Drawer implements View.OnClickListener {
                                     increase = false;
                                     changeDrawable(false,alert);
                                     changeResponseNumber();
+                                    sendNotification("rejected");
+
                                 }
                             });
                         }

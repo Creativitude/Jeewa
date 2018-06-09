@@ -22,6 +22,8 @@ public class Dashboard extends Drawer {
         navigationView.setCheckedItem(R.id.home);
 
         getSupportActionBar().setTitle("");
+
+
     }
 
     @Override

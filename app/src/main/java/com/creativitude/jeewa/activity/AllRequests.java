@@ -62,7 +62,10 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
         rvAllRequests = findViewById(R.id.rvAllRequests);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AllRequests.this);
         linearLayoutManager.setSmoothScrollbarEnabled(true);
+        linearLayoutManager.setStackFromEnd(false);
+
         rvAllRequests.setLayoutManager(linearLayoutManager);
+
         rvAllRequests.setOnClickListener(this);
 
         DividerItemDecoration itemDecoration = new DividerItemDecoration(
