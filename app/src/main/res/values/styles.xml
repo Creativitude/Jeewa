@@ -7,8 +7,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
-        <item name="android:windowAllowEnterTransitionOverlap" tools:targetApi="lollipop">true</item>
-        <item name="android:windowAllowReturnTransitionOverlap" tools:targetApi="lollipop">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap" tools:targetApi="lollipop">true
+        </item>
+        <item name="android:windowAllowReturnTransitionOverlap" tools:targetApi="lollipop">true
+        </item>
     </style>
 
     <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
@@ -17,8 +19,10 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
-        <item name="android:windowAllowEnterTransitionOverlap" tools:targetApi="lollipop">true</item>
-        <item name="android:windowAllowReturnTransitionOverlap" tools:targetApi="lollipop">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap" tools:targetApi="lollipop">true
+        </item>
+        <item name="android:windowAllowReturnTransitionOverlap" tools:targetApi="lollipop">true
+        </item>
     </style>
 
     <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
@@ -34,5 +38,9 @@
     <style name="FloatingActionButton" parent="Widget.Design.FloatingActionButton">
         <item name="backgroundTint">@color/fab_red</item>
     </style>
+
+    <style name="AppTheme2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme2.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

@@ -33,12 +33,12 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tab_my_request"
+                android:id="@+id/tabItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tab_my_response"
+                android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

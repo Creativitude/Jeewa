@@ -147,7 +147,7 @@ public class CreatePost extends Drawer implements View.OnClickListener {
         //add the post id (key) to user's 'posts' node
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
         DatabaseReference userRef = rootRef.getReference("Users");
-        userRef.child(firebaseUser.getUid()).child("Posts").push().setValue(postRef.getKey());
+        userRef.child(firebaseUser.getUid()).child("Posts").child(postRef.getKey()).setValue(postRef.getKey());
 
         //start new response node
 //        DatabaseReference responseRef = rootRef.getReference("Responses");
