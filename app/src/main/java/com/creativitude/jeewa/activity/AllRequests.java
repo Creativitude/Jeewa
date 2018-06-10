@@ -108,13 +108,7 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
         loader.showAlert();
 
 
-        FirebaseRecyclerAdapter<Post, AllRequestsHolder> allRequestAdapter = new FirebaseRecyclerAdapter<
-                Post, AllRequestsHolder>(
-                Post.class,
-                R.layout.request_card,
-                AllRequestsHolder.class,
-                postsRef
-        ) {
+        FirebaseRecyclerAdapter<Post, AllRequestsHolder> allRequestAdapter = new FirebaseRecyclerAdapter<Post, AllRequestsHolder>(Post.class, R.layout.request_card, AllRequestsHolder.class, postsRef) {
             @Override
             protected void populateViewHolder(AllRequestsHolder viewHolder, Post model, int position) {
 
@@ -135,7 +129,7 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        CommonOnClicks.fullCardOnClick(view,post_id,AllRequests.this,getApplicationContext(),RequestPost.class);
+                        CommonOnClicks.fullCardOnClick(view, post_id, AllRequests.this, getApplicationContext(), RequestPost.class);
                     }
                 });
 
@@ -249,4 +243,6 @@ public class AllRequests extends Drawer implements AdapterView.OnItemClickListen
 
         }
     }
+
+
 }

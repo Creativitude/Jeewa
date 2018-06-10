@@ -419,13 +419,13 @@ public class RequestPost extends Drawer implements View.OnClickListener {
         numberOfResponses.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
+                if (dataSnapshot.exists()) {
 
                     if (increase) {
                         numberOfResponses.setValue(Integer.parseInt(dataSnapshot.getValue().toString()) + 1);
                         increase = false;
-                    } else if (decrease){
-                        numberOfResponses.setValue(Integer.parseInt(dataSnapshot.getValue().toString())  - 1);
+                    } else if (decrease) {
+                        numberOfResponses.setValue(Integer.parseInt(dataSnapshot.getValue().toString()) - 1);
                         decrease = false;
                     }
 

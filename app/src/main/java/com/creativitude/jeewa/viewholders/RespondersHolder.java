@@ -36,19 +36,19 @@ public class RespondersHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setName (String name) {
+    public void setName(String name) {
         this.name.setText(name);
     }
 
-    public void setBloodType (String bloodType) {
+    public void setBloodType(String bloodType) {
         this.bloodType.setText(bloodType);
     }
 
-    public void setDistrict (String district) {
+    public void setDistrict(String district) {
         this.district.setText(district);
     }
 
-    public void setCall (String number) {
+    public void setCall(String number) {
         this.call.setTag(number);
     }
 }

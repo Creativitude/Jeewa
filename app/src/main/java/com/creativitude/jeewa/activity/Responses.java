@@ -91,7 +91,7 @@ public class Responses extends Drawer {
 
         loader.showAlert();
 
-        FirebaseIndexRecyclerAdapter<User,RespondersHolder> adapter = new FirebaseIndexRecyclerAdapter<User, RespondersHolder>(
+        FirebaseIndexRecyclerAdapter<User, RespondersHolder> adapter = new FirebaseIndexRecyclerAdapter<User, RespondersHolder>(
                 User.class,
                 R.layout.response_card,
                 RespondersHolder.class,
@@ -103,7 +103,7 @@ public class Responses extends Drawer {
             protected void populateViewHolder(RespondersHolder viewHolder, User model, int position) {
 
                 emptyViewCheck = false;
-                if (emptyView.getVisibility() == View.VISIBLE){
+                if (emptyView.getVisibility() == View.VISIBLE) {
                     emptyView.setVisibility(View.GONE);
                 }
 
@@ -118,7 +118,7 @@ public class Responses extends Drawer {
             protected void onDataChanged() {
                 super.onDataChanged();
 
-                if(emptyViewCheck) {
+                if (emptyViewCheck) {
                     emptyView.setVisibility(View.VISIBLE);
                 }
                 loader.hideAlert();

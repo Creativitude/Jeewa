@@ -23,7 +23,7 @@ public class Post {
     public Post() {
     }
 
-    public Post(String name, String area, String gender, String bloodGroup, String age, String contactPerson, String contactNumber, String relationship, String optionalMessage, String priority,String date, Long numberOfResponses) {
+    public Post(String name, String area, String gender, String bloodGroup, String age, String contactPerson, String contactNumber, String relationship, String optionalMessage, String priority, String date, Long numberOfResponses) {
         this.name = name;
         this.area = area;
         this.gender = gender;

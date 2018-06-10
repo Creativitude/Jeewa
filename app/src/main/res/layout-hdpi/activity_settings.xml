@@ -10,9 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:orientation="horizontal"
         android:padding="5dp">
 
         <ImageView
@@ -34,8 +34,8 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
         android:id="@+id/set_Language"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -55,8 +55,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/choose_the_display_language"
                 android:layout_marginTop="5dp"
+                android:text="@string/choose_the_display_language"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -72,9 +72,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:orientation="horizontal"
         android:padding="5dp">
 
         <ImageView
@@ -116,8 +116,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/notify_my_blood_group_only"
                 android:layout_marginTop="5dp"
+                android:text="@string/notify_my_blood_group_only"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -129,7 +129,7 @@
             android:gravity="center_vertical"
             android:paddingEnd="10dp"
             android:paddingRight="10dp"
-            android:thumbTint="@color/colorPrimary"/>
+            android:thumbTint="@color/colorPrimary" />
 
 
     </LinearLayout>
@@ -143,9 +143,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:orientation="horizontal"
         android:padding="5dp">
 
         <ImageView
@@ -187,8 +187,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tell us whether you like to donate blood"
                 android:layout_marginTop="5dp"
+                android:text="Tell us whether you like to donate blood"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -199,7 +199,7 @@
             android:gravity="center_vertical"
             android:paddingEnd="10dp"
             android:paddingRight="10dp"
-            android:thumbTint="@color/colorPrimary"/>
+            android:thumbTint="@color/colorPrimary" />
 
     </LinearLayout>
 

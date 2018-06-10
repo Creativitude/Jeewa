@@ -49,7 +49,7 @@ public class MyResponses extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        myResponseView =  inflater.inflate(R.layout.fragment_my_responses, container, false);
+        myResponseView = inflater.inflate(R.layout.fragment_my_responses, container, false);
 
         emptyView = myResponseView.findViewById(R.id.myResponsesEmptyView);
         rvMyResponse = myResponseView.findViewById(R.id.rv_my_responses);
@@ -97,10 +97,10 @@ public class MyResponses extends Fragment {
 
         loader.showAlert();
 
-        Log.d("MyResponses","inside onStart");
+        Log.d("MyResponses", "inside onStart");
 
 
-        FirebaseIndexRecyclerAdapter<Post,AllRequestsHolder> adapter = new FirebaseIndexRecyclerAdapter<Post, AllRequestsHolder>(
+        FirebaseIndexRecyclerAdapter<Post, AllRequestsHolder> adapter = new FirebaseIndexRecyclerAdapter<Post, AllRequestsHolder>(
                 Post.class,
                 R.layout.request_card,
                 AllRequestsHolder.class,
@@ -112,13 +112,13 @@ public class MyResponses extends Fragment {
             protected void populateViewHolder(AllRequestsHolder viewHolder, Post model, int position) {
 
                 emptyViewCheck = false;
-                if (emptyView.getVisibility() == View.VISIBLE){
+                if (emptyView.getVisibility() == View.VISIBLE) {
                     emptyView.setVisibility(View.GONE);
                 }
 
                 final String post_id = getRef(position).getKey();
 
-                Log.d("MyResponses","inside view holder");
+                Log.d("MyResponses", "inside view holder");
 
                 viewHolder.setBloodType(model.getBloodGroup());
                 viewHolder.setContactPerson(model.getContactPerson());
@@ -131,7 +131,7 @@ public class MyResponses extends Fragment {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        CommonOnClicks.fullCardOnClick(view,post_id,getActivity(),getContext(), RequestPost.class);
+                        CommonOnClicks.fullCardOnClick(view, post_id, getActivity(), getContext(), RequestPost.class);
                     }
                 });
 
@@ -141,10 +141,10 @@ public class MyResponses extends Fragment {
             protected void onDataChanged() {
                 super.onDataChanged();
 
-                Log.d("MyResponses","inside onDataChanged");
+                Log.d("MyResponses", "inside onDataChanged");
 
 
-                if(emptyViewCheck) {
+                if (emptyViewCheck) {
                     emptyView.setVisibility(View.VISIBLE);
                 }
                 loader.hideAlert();
@@ -152,7 +152,6 @@ public class MyResponses extends Fragment {
         };
 
         rvMyResponse.setAdapter(adapter);
-
 
 
     }
