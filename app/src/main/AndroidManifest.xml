@@ -60,10 +60,13 @@
             android:theme="@style/AppTheme2" />
         <activity
             android:name=".activity.AllRequests"
+            android:theme="@style/AppTheme2"
             android:label="@string/requests">
 
              <!--<intent-filter> -->
              <!--<action android:name="android.intent.action.MAIN" /> -->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
 
              <!--<category android:name="android.intent.category.LAUNCHER" /> -->
@@ -77,6 +80,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.MyActivities"
             android:label="@string/title_activity_my_activities"
@@ -84,7 +88,15 @@
         <activity android:name=".activity.Responses" />
         <activity
             android:name=".activity.Settings"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".activity.Notifications" />
         <activity android:name=".activity.Drawer" />
 
@@ -104,6 +116,9 @@
             </intent-filter>
         </service>
 
+        <activity
+            android:name=".helpers.SelectLanguage"
+            android:theme="@style/Theme.AppCompat.Dialog" />
     </application>
 
 </manifest>

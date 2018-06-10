@@ -90,6 +90,13 @@
     <string name="reject_request">You have rejected the request !</string>
     <string name="rejected">Rejected</string>
     <string name="db_btn_see_nearbyUsers">අසල්වැසි දායකයන්</string>
+    <string name="language">Language</string>
+    <string name="sinhala">Sinhala</string>
+    <string name="choose_the_display_language">Choose the display language</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="make_changes_to_initially_created_profile">Make changes to initially created profile</string>
+    <string name="push_notifications">Push Notifications</string>
+    <string name="english">English</string>
     <string name="my_responses">My Responses</string>
 
     <string-array name="langs">
