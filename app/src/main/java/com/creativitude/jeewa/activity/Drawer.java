@@ -17,8 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.creativitude.jeewa.Dashboard;
+import com.creativitude.jeewa.InfoList;
 import com.creativitude.jeewa.Login;
 import com.creativitude.jeewa.R;
+import com.creativitude.jeewa.helpers.Alert;
 
 public class Drawer extends AppCompatActivity {
 
@@ -72,7 +74,7 @@ public class Drawer extends AppCompatActivity {
 
                     case R.id.important_info:
                         drawerLayout.closeDrawers();
-//                        startActivity(Notifications.class);
+                        startActivity(InfoList.class);
                         break;
 
                     case R.id.profile:
@@ -126,9 +128,13 @@ public class Drawer extends AppCompatActivity {
     }
 
     private void logout() {
+
+        final Alert alert = new Alert(this);
+        alert.showAlert();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                alert.hideAlert();
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
             }

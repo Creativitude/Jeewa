@@ -100,19 +100,19 @@
             android:name=".helpers.SelectLanguage"
             android:excludeFromRecents="true"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <!--<activity-->
-            <!--android:name=".InfoList"-->
-            <!--android:label="Important Information"-->
-            <!--android:theme="@style/AppTheme">-->
+        <activity
+            android:name=".InfoList"
+            android:label="Important Information"
+            android:theme="@style/AppTheme2">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".activity.DonorSelectionInfo" />-->
-        <!--<activity android:name=".activity.BeforeTransfusionInfo" />-->
-        <!--<activity android:name=".activity.BloodGroupInfo" />-->
+        </activity>
+        <activity android:name=".activity.DonorSelectionInfo" />
+        <activity android:name=".activity.BeforeTransfusionInfo" />
+        <activity android:name=".activity.BloodGroupInfo" />
         <activity android:name=".activity.RisksInfo" />
     </application>
 
