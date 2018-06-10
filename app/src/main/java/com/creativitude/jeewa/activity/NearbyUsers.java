@@ -30,6 +30,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,13 +44,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     private static final String TAG = "NearbyUsers";
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-    private static final float DEFAULT_ZOOM = 14f;
+    private static final float DEFAULT_ZOOM = 12f;
 
     private GoogleMap googleMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -58,14 +61,12 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
     private boolean mLocationPermissionGranted = false;
     private boolean statusCheck = false;
 
-    private View contentView;
-
     private Spinner mapSpinner;
     private DatabaseReference topicRef;
     private DatabaseReference userRef;
+    private CircleImageView gpsIcon;
 
     private ArrayList<Topic> markers;
-    private LatLng latLng1;
     private Topic userDetails;
 
     @Override
@@ -98,6 +99,9 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
         }
 
         mapSpinner = findViewById(R.id.map_spinner);
+        gpsIcon = findViewById(R.id.map_gps);
+
+        gpsIcon.setOnClickListener(this);
 
         mapSpinner.setOnItemSelectedListener(this);
         topicRef = FirebaseDatabase.getInstance().getReference("Topics");
@@ -133,14 +137,17 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
                                 Log.d(TAG, "onComplete: found location");
 
                                 if (statusCheck) {
+
+                                    Log.d(TAG, "onComplete: after status check inside if");
                                     Location currentLocation = (Location) task.getResult();
+
+                                    Log.d(TAG, "onComplete: location: " + currentLocation );
 
                                     moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),
                                             DEFAULT_ZOOM);
                                 } else {
                                     Toast.makeText(getApplicationContext(), R.string.turn_gps_on,Toast.LENGTH_SHORT).show();
                                 }
-
 
                             } else {
                                 Log.d(TAG, "onComplete: location not found");
@@ -245,8 +252,6 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
                     Log.d(TAG, "onRequestPermissionsResult: permission granted");
                     mLocationPermissionGranted = true;
                     initMap();
-
-
                 }
             }
         }
@@ -282,14 +287,9 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
                                 continue;
                             }
 
-//                            addMarker(userDetails);
-
                             markers.add(userDetails);
 
                         }
-
-
-
                         addMarker(markers);
                     }
                 }
@@ -299,39 +299,44 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
 
                 }
             });
-
         }
-
-
     }
 
     private void addMarker(ArrayList<Topic> user) {
-
-        int count = 1;
 
         for (int i = 0; i < user.size(); i++) {
 
             Topic marker = user.get(i);
 
-            Log.d(TAG, "addMarker: count : " + String.valueOf(count));
             Log.d(TAG, "addMarker: init lat: " + marker.getHt_lat());
             Log.d(TAG, "addMarker: init long: " + marker.getHt_long());
 
-            count++;
+            LatLng latLng1 = new LatLng(marker.getHt_lat(), marker.getHt_long());
 
-            latLng1 = new LatLng(marker.getHt_lat(),marker.getHt_long());
+            String snippet = "Phone Number : " + marker.getNumber();
+
+//            googleMap.setInfoWindowAdapter(new CustomInfoWIndowAdapter(NearbyUsers.this));
 
             MarkerOptions options = new MarkerOptions()
                     .position(latLng1)
-                    .title(marker.getName());
-//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.person_pin));
+                    .title(marker.getName())
+                    .snippet(snippet)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_person_pin));
 
             googleMap.addMarker(options);
+
         }
     }
+
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        Log.d(TAG, "onClick: clicked gps icon");
+        getDeviceLocation();
     }
 }

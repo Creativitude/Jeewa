@@ -33,10 +33,21 @@
             android:id="@+id/map_spinner"
             style="@style/Base.Widget.AppCompat.DropDownItem.Spinner"
             android:entries="@array/blood_groups2">
-
-
         </Spinner>
 
     </RelativeLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="70dp"
+        android:contentDescription="@string/content"
+        android:scaleType="centerCrop"
+        android:id="@+id/map_gps"
+        android:src="@drawable/ic_gps"
+        />
 
 </RelativeLayout>

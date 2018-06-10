@@ -45,6 +45,8 @@ dependencies {
     implementation 'com.squareup.okio:okio:1.14.1'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.google.android.gms:play-services:11.6.2'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
 }
 
 
