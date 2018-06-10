@@ -23,9 +23,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation "com.android.support:design:27.1.1"
+    implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.google.firebase:firebase-database:11.6.2'
     implementation 'com.google.firebase:firebase-auth:11.6.2'
@@ -43,9 +44,7 @@ dependencies {
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
     implementation 'com.squareup.okio:okio:1.14.1'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-
-
-
+    implementation 'com.google.android.gms:play-services:11.6.2'
 }
 
 

@@ -170,5 +170,21 @@
      -->
     <string name="default_notification_channel_name" translatable="true">News</string>
     <string name="msg_subscribe_failed">Failed to subscribe to news topic</string>
+    <string name="google_map_error">There is a problem connecting to Google Maps!</string>
+    <string name="location_not_found">Current location not found</string>
+    <string name="get_gps">You need to enable GPS to use this service!</string>
+    <string name="turn_gps_on">Please turn on GPS to use this service.</string>
+
+    <string-array name="blood_groups2">
+        <item>Search People By Blood Group</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
 
 </resources>

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.creativitude.jeewa.helpers.Alert;
 import com.creativitude.jeewa.helpers.Constants;
 import com.creativitude.jeewa.https.PostMethod;
+import com.creativitude.jeewa.models.Topic;
 import com.creativitude.jeewa.models.User;
 import com.creativitude.jeewa.services.MyFirebaseInstanceIDService;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -173,6 +174,16 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
 
         String topic;
 
+        Topic model = new Topic();
+
+
+//        model.setHt_lat();
+//        model.setHt_long();
+        model.setId(user.getUid());
+        model.setName(this.user.getName());
+        model.setNumber(this.user.getContact_no());
+
+
         if(this.user.isSend_notifications()){
             topic = "O-";
         } else {
@@ -180,9 +191,9 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
         }
 
         DatabaseReference topicRef = database.getReference("Topics");
-        topicRef.child(topic).child(user.getUid()).setValue(user.getUid());
+        topicRef.child(topic).child(user.getUid()).setValue(model);
 
-        subscribeToTopic(topic);
+        subscribeToTopic(topic); //subscribe to FCM topic messaging
     }
 
     private void subscribeToTopic(String topic) {
