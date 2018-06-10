@@ -94,17 +94,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
-                android:text="@string/register_contact"
+                android:text="@string/living_town"
                 android:textSize="16sp" />
 
-            <!--<fragment-->
-            <!--android:id="@+id/place_autocomplete_fragment"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"-->
-            <!--/>-->
-
+            <EditText
+                android:id="@+id/et_reg_nearest_town"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
         </LinearLayout>
 

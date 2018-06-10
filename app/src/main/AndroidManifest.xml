@@ -30,7 +30,16 @@
         <activity
             android:name=".Login"
             android:configChanges="locale|orientation"
-            android:theme="@style/AppTheme2" />
+            android:theme="@style/AppTheme2" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".Register"
             android:label="@string/label_register"
@@ -49,30 +58,17 @@
         <activity
             android:name=".activity.AllRequests"
             android:theme="@style/AppTheme2"
-            android:label="@string/requests">
-            android:label="@string/requests"
-            android:theme="@style/AppTheme2" />
+            android:label="@string/requests"/>
 
-             <!--<intent-filter> -->
-             <!--<action android:name="android.intent.action.MAIN" /> -->
+        <activity android:name=".activity.NearbyUsers">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-             <!--<category android:name="android.intent.category.LAUNCHER" /> -->
-             <!--</intent-filter> -->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
-        <activity android:name=".activity.NearbyUsers">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-|        <activity
+        <activity
             android:name=".activity.MyActivities"
             android:label="@string/title_activity_my_activities"
             android:theme="@style/AppTheme2" />
@@ -80,7 +76,7 @@
         <activity
             android:name=".activity.Settings"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme2" />
         <activity android:name=".activity.Notifications" />
         <activity android:name=".activity.Drawer" />
 
@@ -104,20 +100,20 @@
             android:name=".helpers.SelectLanguage"
             android:excludeFromRecents="true"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity
-            android:name=".InfoList"
-            android:label="Important Information"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <!--<activity-->
+            <!--android:name=".InfoList"-->
+            <!--android:label="Important Information"-->
+            <!--android:theme="@style/AppTheme">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.DonorSelectionInfo" />
-        <activity android:name=".activity.BeforeTransfusionInfo" />
-        <activity android:name=".activity.BloodGroupInfo" />
-        <activity android:name=".activity.RisksInfo"></activity>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".activity.DonorSelectionInfo" />-->
+        <!--<activity android:name=".activity.BeforeTransfusionInfo" />-->
+        <!--<activity android:name=".activity.BloodGroupInfo" />-->
+        <activity android:name=".activity.RisksInfo" />
     </application>
 
 </manifest>

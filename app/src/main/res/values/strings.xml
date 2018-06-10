@@ -264,5 +264,6 @@
     <string name="location_not_found">Current location not found</string>
     <string name="get_gps">You need to enable GPS to use this service!</string>
     <string name="turn_gps_on">Please turn on GPS to use this service.</string>
+    <string name="living_town">Nearest Town</string>
 
 </resources>

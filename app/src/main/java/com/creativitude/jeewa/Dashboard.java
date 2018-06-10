@@ -1,9 +1,11 @@
 package com.creativitude.jeewa;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -11,15 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
+import com.creativitude.jeewa.activity.AllRequests;
 import com.creativitude.jeewa.activity.Drawer;
 import com.creativitude.jeewa.activity.NearbyUsers;
+import com.creativitude.jeewa.helpers.Transitions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 public class Dashboard extends Drawer implements View.OnClickListener {
 
     private static final String TAG = "Dashboard";
-    private Button nearbyUsers;
     private static final int ERROR_DIALOG_REQUEST = 9001;
 
 
@@ -27,10 +30,19 @@ public class Dashboard extends Drawer implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        if(isServicesOk()) {
-            startActivity(new Intent(Dashboard.this, NearbyUsers.class));
-        }
+        switch (view.getId()) {
+            case R.id.btn_dash_search: {
+                if(isServicesOk()) {
+                    startActivity(NearbyUsers.class);
+                }
+                break;
+            }
 
+            case R.id.btn_dash_requests: {
+                startActivity(AllRequests.class);
+                break;
+            }
+        }
     }
 
     @Override
@@ -43,17 +55,33 @@ public class Dashboard extends Drawer implements View.OnClickListener {
         navigationView.setCheckedItem(R.id.home);
         getSupportActionBar().setTitle("");
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Transitions.init(Dashboard.this);
+        }
 
         init();
 
+    }
 
+    private void startActivity(final Class toClass) {
 
+        Intent intent = new Intent(getApplicationContext(), toClass);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
+            startActivity(intent, options.toBundle());
+        } else {
+            startActivity(intent);
+            overridePendingTransition(R.anim.right_in, R.anim.left_out);
+        }
     }
 
     private void init() {
 
-        nearbyUsers = findViewById(R.id.btn_dash_search);
+        Button nearbyUsers = findViewById(R.id.btn_dash_search);
         nearbyUsers.setOnClickListener(this);
+
+        Button goToRequests = findViewById(R.id.btn_dash_requests);
+        goToRequests.setOnClickListener(this);
     }
 
     public boolean isServicesOk() {
@@ -83,9 +111,6 @@ public class Dashboard extends Drawer implements View.OnClickListener {
 
 
 
-
-
-
     @Override
     protected void onResume() {
         navigationView.setCheckedItem(R.id.home);
@@ -95,7 +120,15 @@ public class Dashboard extends Drawer implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.left_in, R.anim.right_out);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+
+            finishAfterTransition();
+
+        } else {
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+
+        }
     }
 
 

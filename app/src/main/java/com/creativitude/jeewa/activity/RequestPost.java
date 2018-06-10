@@ -519,7 +519,7 @@ public class RequestPost extends Drawer implements View.OnClickListener {
     }
 
     private void setAcceptButton() {
-        accept.setText(R.string.accepted);
+        accept.setText(R.string.accept);
         request_state.setText(R.string.not_accepted);
         state = getString(R.string.not_accepted);
     }

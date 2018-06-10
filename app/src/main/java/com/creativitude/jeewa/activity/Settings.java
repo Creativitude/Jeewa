@@ -1,22 +1,33 @@
 package com.creativitude.jeewa.activity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.creativitude.jeewa.R;
+import com.creativitude.jeewa.helpers.Connectivity;
 import com.creativitude.jeewa.helpers.SelectLanguage;
 import com.creativitude.jeewa.helpers.Transitions;
 
-public class Settings extends AppCompatActivity {
+public class Settings extends Drawer {
+
+    private Connectivity connectivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        final LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
+        @SuppressLint("InflateParams") View contentView = inflater.inflate(R.layout.activity_settings, null, false);
+        drawerLayout.addView(contentView, 0);
+        navigationView.setCheckedItem(R.id.settings);
+        connectivity = new Connectivity(this);
+
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -47,5 +58,12 @@ public class Settings extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        navigationView.setCheckedItem(R.id.settings);
+        connectivity.checkConnectionState(navigationView);
 
+
+    }
 }

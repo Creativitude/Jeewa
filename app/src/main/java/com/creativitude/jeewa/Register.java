@@ -1,6 +1,8 @@
 package com.creativitude.jeewa;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,7 @@ import com.creativitude.jeewa.https.PostMethod;
 import com.creativitude.jeewa.models.Topic;
 import com.creativitude.jeewa.models.User;
 import com.creativitude.jeewa.services.MyFirebaseInstanceIDService;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -36,8 +39,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Register extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class Register extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
 
     private static final String TAG = "RegisterActivity";
     private EditText name;
@@ -47,11 +51,15 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
     private EditText password;
     private EditText confirm_password;
 
+    private EditText nearest_town;
     private Button register;
 
 
     private Spinner district;
     private Spinner bg;
+
+    private Double ht_lat;
+    private Double ht_long;
 
     private RadioGroup gender;
     private RadioButton male;
@@ -70,6 +78,7 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
     private Alert alert;
 
     private ArrayList<String> token;
+    private GoogleApiClient mGoogleApiClient;
 
 
     @Override
@@ -96,6 +105,7 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
         send_notifications = findViewById(R.id.cb_reg_send_notifications);
         terms = findViewById(R.id.cb_reg_terms_and_conditions);
         register = findViewById(R.id.btn_reg_register);
+        nearest_town = findViewById(R.id.et_reg_nearest_town);
 
         register.setEnabled(false);
 
@@ -106,6 +116,27 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
 
         terms.setOnCheckedChangeListener(this);
 
+    }
+
+    private Address getGeoCoder (String location) {
+
+        if(Geocoder.isPresent()){
+            Log.d(TAG, "onCreate: inside geocoder");
+            try {
+                Geocoder gc = new Geocoder(this);
+                List<Address> addresses= gc.getFromLocationName(location, 1); // get the found Address Objects
+                Log.d(TAG, "onCreate: address list: " + addresses.get(0));
+
+                return addresses.get(0);
+
+            } catch (IOException e) {
+                // handle the exception
+                Log.e(TAG, "onCreate: IOException: " + e.getMessage());
+                return null;
+            }
+        }
+
+        return null;
     }
 
     public void register(View view) {
@@ -176,9 +207,8 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
 
         Topic model = new Topic();
 
-
-//        model.setHt_lat();
-//        model.setHt_long();
+        model.setHt_lat(ht_lat);
+        model.setHt_long(ht_long);
         model.setId(user.getUid());
         model.setName(this.user.getName());
         model.setNumber(this.user.getContact_no());
@@ -239,6 +269,20 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
             name.setError(getString(R.string.empty_field));
             error++;
         }
+
+        if (!TextUtils.isEmpty(nearest_town.getText().toString().trim())) {
+
+            Address result = getGeoCoder(nearest_town.getText().toString().trim());
+
+            try {
+                ht_lat = result.getLatitude();
+                ht_long = result.getLongitude();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
 
         if(!TextUtils.isEmpty(age.getText().toString())) {
             user.setAge(age.getText().toString().trim());
@@ -332,4 +376,5 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
             register.setEnabled(false);
         }
     }
+
 }

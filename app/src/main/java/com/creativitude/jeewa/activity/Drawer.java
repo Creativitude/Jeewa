@@ -72,6 +72,7 @@ public class Drawer extends AppCompatActivity {
 
                     case R.id.important_info:
                         drawerLayout.closeDrawers();
+//                        startActivity(Notifications.class);
                         break;
 
                     case R.id.profile:
@@ -85,7 +86,7 @@ public class Drawer extends AppCompatActivity {
 
 
                     case R.id.logout:
-//                        logout();
+                        logout();
                         break;
 
                     case R.id.about_developer:
