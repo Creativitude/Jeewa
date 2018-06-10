@@ -5,22 +5,22 @@
     tools:context="com.creativitude.jeewa.fragments.MyResponses">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_my_responses"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv_my_responses">
+        android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
 
     <TextView
+        android:id="@+id/myResponsesEmptyView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/myResponsesEmptyView"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:text="@string/empty_view"
-        android:textSize="16sp"
         android:textAlignment="center"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 </RelativeLayout>

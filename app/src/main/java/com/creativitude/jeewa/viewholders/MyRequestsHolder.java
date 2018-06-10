@@ -20,7 +20,6 @@ public class MyRequestsHolder extends RecyclerView.ViewHolder {
     private final TextView date;
 
 
-
     public MyRequestsHolder(View itemView) {
         super(itemView);
 
@@ -35,7 +34,7 @@ public class MyRequestsHolder extends RecyclerView.ViewHolder {
         this.bloodType.setText(bloodType);
     }
 
-    public void setPriority (String priority) {
+    public void setPriority(String priority) {
 
         switch (Integer.parseInt(priority)) {
 

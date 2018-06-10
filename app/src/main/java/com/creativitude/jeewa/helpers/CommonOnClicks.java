@@ -20,7 +20,7 @@ public class CommonOnClicks {
 //                view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
 //
 //        ActivityCompat.startActivity(AllRequests.this, intent, options);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+
         context.startActivity(intent);
 
     }

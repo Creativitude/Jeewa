@@ -46,7 +46,6 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccentLight"
             app:cardElevation="4dp">
 
             <LinearLayout
@@ -61,7 +60,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
-                    android:src="@drawable/red_lifebuoy_48" />
+                    android:src="@drawable/red_lifebuoy_48"
+                    android:tint="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/db_noOfLivesSaved"
@@ -104,7 +104,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
-                    android:src="@drawable/red_volunteer_48" />
+                    android:src="@drawable/red_volunteer_48"
+                    android:tint="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/db_noOfTimesDonated"
@@ -144,18 +145,18 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="left"
                 android:scaleType="fitStart"
-                android:src="@drawable/logo_name" />
+                android:src="@drawable/healer_icon" />
 
 
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="15dp" />
+            android:layout_height="10dp" />
 
 
         <android.support.v7.widget.CardView
@@ -176,7 +177,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
-                    android:src="@drawable/red_last24_48" />
+                    android:src="@drawable/red_last24_48"
+                    android:tint="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/db_noOfDonationsToday"
@@ -219,7 +221,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
-                    android:src="@drawable/red_trust_48" />
+                    android:src="@drawable/red_trust_48"
+                    android:tint="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/db_noOfRequests"
@@ -253,6 +256,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:drawableLeft="@drawable/trust_24"
+                android:drawableTint="@color/colorPrimary"
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
                 android:text="@string/db_btn_see_requests"

@@ -57,10 +57,10 @@ public class MyActivities extends Drawer {
         // primary sections of the activity.
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager =  findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         setupViewPager(mViewPager);
 
-        TabLayout tabLayout =  findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
@@ -75,6 +75,24 @@ public class MyActivities extends Drawer {
         viewPager.setAdapter(adapter);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        navigationView.setCheckedItem(R.id.my_requests);
+        connectivity.checkConnectionState(navigationView);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            finishAfterTransition();
+        } else {
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+    }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -103,24 +121,5 @@ public class MyActivities extends Drawer {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            finishAfterTransition();
-        } else {
-            overridePendingTransition(R.anim.left_in, R.anim.right_out);
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        navigationView.setCheckedItem(R.id.my_requests);
-        connectivity.checkConnectionState(navigationView);
-
     }
 }
