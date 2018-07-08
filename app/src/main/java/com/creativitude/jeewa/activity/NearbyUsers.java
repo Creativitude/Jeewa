@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.creativitude.jeewa.R;
+import com.creativitude.jeewa.helpers.Dialer;
 import com.creativitude.jeewa.helpers.Transitions;
 import com.creativitude.jeewa.models.Topic;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -32,6 +33,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -55,16 +57,13 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
     private static final float DEFAULT_ZOOM = 12f;
 
     private GoogleMap googleMap;
-    private FusedLocationProviderClient fusedLocationProviderClient;
 
 
     private boolean mLocationPermissionGranted = false;
     private boolean statusCheck = false;
 
-    private Spinner mapSpinner;
     private DatabaseReference topicRef;
     private DatabaseReference userRef;
-    private CircleImageView gpsIcon;
 
     private ArrayList<Topic> markers;
     private Topic userDetails;
@@ -87,6 +86,25 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
             googleMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
 
+        googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+
+                String snip = marker.getSnippet();
+                String[] snipSplit = new String[0];
+
+                try{
+                    snipSplit = snip.split("Phone Number : ");
+
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
+                Dialer dialer = new Dialer(getApplicationContext());
+                dialer.dial(snipSplit[1]);
+            }
+        });
+
     }
 
     @Override
@@ -98,8 +116,8 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
             Transitions.init(NearbyUsers.this);
         }
 
-        mapSpinner = findViewById(R.id.map_spinner);
-        gpsIcon = findViewById(R.id.map_gps);
+        Spinner mapSpinner = findViewById(R.id.map_spinner);
+        CircleImageView gpsIcon = findViewById(R.id.map_gps);
 
         gpsIcon.setOnClickListener(this);
 
@@ -122,7 +140,7 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
     private void getDeviceLocation() {
         Log.d(TAG, "getDeviceLocation: get the current location of the device");
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         try {
 
@@ -143,8 +161,15 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
 
                                     Log.d(TAG, "onComplete: location: " + currentLocation );
 
-                                    moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),
-                                            DEFAULT_ZOOM);
+                                    try {
+                                        moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),
+                                                DEFAULT_ZOOM);
+                                    } catch (NullPointerException e) {
+                                        Log.e(TAG, "onComplete: NullPointerException: " + e.getMessage() );
+                                        Toast.makeText(getApplicationContext(),"Cannot find your current location. Please try again.",Toast.LENGTH_SHORT).show();
+                                    }
+
+
                                 } else {
                                     Toast.makeText(getApplicationContext(), R.string.turn_gps_on,Toast.LENGTH_SHORT).show();
                                 }
@@ -242,8 +267,8 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
 
                 if (grantResults.length > 0) {
 
-                    for (int i = 0; i<grantResults.length; i++) {
-                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED){
+                    for (int grantResult : grantResults) {
+                        if (grantResult != PackageManager.PERMISSION_GRANTED) {
                             mLocationPermissionGranted = false;
                             Log.d(TAG, "onRequestPermissionsResult: permission failed");
                             return;
@@ -291,6 +316,8 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
 
                         }
                         addMarker(markers);
+                    } else {
+                        googleMap.clear();
                     }
                 }
 
@@ -303,6 +330,8 @@ public class NearbyUsers extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void addMarker(ArrayList<Topic> user) {
+
+        googleMap.clear();
 
         for (int i = 0; i < user.size(); i++) {
 

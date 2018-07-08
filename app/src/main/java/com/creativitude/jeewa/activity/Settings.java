@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 
 import com.creativitude.jeewa.R;
 import com.creativitude.jeewa.helpers.Connectivity;
@@ -18,15 +21,45 @@ public class Settings extends Drawer {
 
     private Connectivity connectivity;
 
+    private Switch notification;
+    private Switch donor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        @SuppressLint("InflateParams") View contentView = inflater.inflate(R.layout.activity_settings, null, false);
+        @SuppressLint("InflateParams") final View contentView = inflater.inflate(R.layout.activity_settings, null, false);
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.settings);
         connectivity = new Connectivity(this);
+
+        notification = findViewById(R.id.notificationSwitch);
+        donor = findViewById(R.id.donateSwitch);
+
+        donor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if (compoundButton.isChecked()) {
+                    Snackbar.make(contentView, R.string.donorSwitch,Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Snackbar.make(contentView, R.string.notADonorSwitch,Snackbar.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        notification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (compoundButton.isChecked()) {
+                    Snackbar.make(contentView, R.string.noitfySwitch,Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Snackbar.make(contentView, R.string.offNotifications,Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
 

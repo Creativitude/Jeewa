@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Jeewa</string>
+    <string name="app_name">Healer</string>
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
     <string name="login_btn_login">Log In</string>
@@ -182,6 +182,9 @@
     <string name="get_gps">You need to enable GPS to use this service!</string>
     <string name="turn_gps_on">Please turn on GPS to use this service.</string>
     <string name="living_town">Nearest Town</string>
+    <string name="donorSwitch">You are now a blood donor</string>
+    <string name="noitfySwitch">You have activated notifications.</string>
+    <string name="offNotifications">You have deactivated notifications</string>
 
     <string-array name="blood_groups2">
         <item>Search People By Blood Group</item>
