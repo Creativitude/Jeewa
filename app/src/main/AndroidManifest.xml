@@ -83,7 +83,8 @@
         <activity android:name=".activity.DonorSelectionInfo" />
         <activity android:name=".activity.BeforeTransfusionInfo" />
         <activity android:name=".activity.BloodGroupInfo" />
-        <activity android:name=".activity.RisksInfo"></activity>
+        <activity android:name=".activity.RisksInfo" />
+        <activity android:name=".activity.EditProfile"></activity>
     </application>
 
 </manifest>
