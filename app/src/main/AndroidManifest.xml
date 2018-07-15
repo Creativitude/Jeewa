@@ -48,8 +48,6 @@
             android:name=".activity.CreatePost"
             android:label="Create Post"
             android:theme="@style/AppTheme2">
-
-            <!-- use AppTheme2 for activities with drawer -->
         </activity>
         <activity
             android:name=".activity.RequestPost"
@@ -60,14 +58,7 @@
             android:theme="@style/AppTheme2"
             android:label="@string/requests"/>
 
-        <activity android:name=".activity.NearbyUsers">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
+        <activity android:name=".activity.NearbyUsers"/>
         <activity
             android:name=".activity.MyActivities"
             android:label="@string/title_activity_my_activities"
@@ -103,17 +94,13 @@
         <activity
             android:name=".InfoList"
             android:label="Important Information"
-            android:theme="@style/AppTheme2">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            android:theme="@style/AppTheme2"/>
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
         <activity android:name=".activity.DonorSelectionInfo" />
         <activity android:name=".activity.BeforeTransfusionInfo" />
         <activity android:name=".activity.BloodGroupInfo" />
         <activity android:name=".activity.RisksInfo" />
+        <activity android:name=".activity.EditProfile"/>
     </application>
 
 </manifest>
