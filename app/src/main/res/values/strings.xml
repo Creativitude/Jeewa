@@ -269,5 +269,6 @@
     <string name="notADonorSwitch">You are not a blood donor anymore</string>
     <string name="noitfySwitch">You have activated notifications.</string>
     <string name="offNotifications">You have deactivated notifications</string>
+    <string name="save">Save</string>
 
 </resources>

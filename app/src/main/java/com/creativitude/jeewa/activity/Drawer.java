@@ -79,6 +79,7 @@ public class Drawer extends AppCompatActivity {
 
                     case R.id.profile:
                         drawerLayout.closeDrawers();
+                        startActivity(EditProfile.class);
                         break;
 
                     case R.id.settings:

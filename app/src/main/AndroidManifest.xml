@@ -100,7 +100,8 @@
         <activity android:name=".activity.BeforeTransfusionInfo" />
         <activity android:name=".activity.BloodGroupInfo" />
         <activity android:name=".activity.RisksInfo" />
-        <activity android:name=".activity.EditProfile"/>
+        <activity android:name=".activity.EditProfile"
+            android:theme="@style/AppTheme2"/>
     </application>
 
 </manifest>

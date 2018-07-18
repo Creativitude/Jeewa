@@ -377,4 +377,5 @@ public class Register extends AppCompatActivity implements CompoundButton.OnChec
         }
     }
 
+
 }

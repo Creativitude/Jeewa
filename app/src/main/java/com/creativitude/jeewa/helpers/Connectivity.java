@@ -8,11 +8,6 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.creativitude.jeewa.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by naveen on 27/05/2018.
@@ -36,22 +31,22 @@ public class Connectivity {
 
     public void checkConnectionState (final View view) {
 
-        DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
-        connectedRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                boolean connected = snapshot.getValue(Boolean.class);
-                if (connected) {
-                    setSnackBar(view,context.getString(R.string.back_online),1);
-                } else {
-                    setSnackBar(view,context.getString(R.string.device_offline),0);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-            }
-        });
+//        DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
+//        connectedRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot snapshot) {
+//                boolean connected = snapshot.getValue(Boolean.class);
+//                if (connected) {
+//                    setSnackBar(view,context.getString(R.string.back_online),1);
+//                } else {
+//                    setSnackBar(view,context.getString(R.string.device_offline),0);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//            }
+//        });
 
 
     }
